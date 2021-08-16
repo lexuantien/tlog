@@ -1,0 +1,35 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "target": "es6",
+        "paths": {
+            "@comps/*": [
+                "./src/comps/*"
+            ],
+            "@pages/*": [
+                "./src/pages/*"
+            ],
+            "@styles/*": [
+                "./src/styles/*"
+            ],
+            "@fonts/*": [
+                "./src/fonts/*"
+            ],
+            "@images/*": [
+                "./src/images/*"
+            ],
+            "@hooks/*": [
+                "./src/hooks/*"
+            ],
+            "@utils/*": [
+                "./src/utils/*"
+            ],
+            "@configs/*": [
+                "./src/configs/*"
+            ]
+        }
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
