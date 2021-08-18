@@ -4,18 +4,20 @@ import ThemeLSVal from "@utils/storage";
 import registerServiceWorker from './serviceWorkerRegistration';
 
 import { App } from '@pages'
+import { globalsClazz } from "@styles/globals"
 
 if (typeof window !== "undefined") {
   // eslint-disable-next-line global-require
   require("smooth-scroll")('a[href*="#"]');
 }
 
+// '0' to assign the first (and only `HTML` tag)
+var html = document.getElementsByTagName('html')[0];
+html.setAttribute('class', `theme-${ThemeLSVal()} ${globalsClazz}`);
 
 ReactDOM.render(
   <BrowserRouter>
-    <div className={`theme-${ThemeLSVal()}`}>
-      <App />
-    </div>
+    <App />
   </BrowserRouter>,
   document.getElementById("root")
 );

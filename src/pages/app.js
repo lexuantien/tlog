@@ -1,25 +1,25 @@
 
 import { styled } from "@linaria/react";
-import ThemeDetect from "@styles/theme"
+import {Vars} from "@styles/variables"
 
 const Container = styled.div`
- ${ThemeDetect(t => ({
-  "background-color": t.background,
+ ${Vars(env => ({
+   "background-color": env.themeColor,
 }))};
 `;
 
 const Header = styled.h1`
-  text-transform: uppercase;
-
-  ${ThemeDetect(t => ({
-  color: t.text,
+  line-height: 24px;
+  font-size: 20px;
+  ${Vars(env => ({
+    color: env.textColor1,
 }))};
 `;
 
 const App = () => {
   return (
     <Container>
-      <Header>Le Xuan Tien</Header>
+      <Header>Home</Header>
     </Container>
   )
 }
