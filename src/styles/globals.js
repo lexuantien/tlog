@@ -2,6 +2,10 @@ import { css } from "@linaria/core";
 
 import { fonts } from "./fonts";
 import { Vars } from "@styles/variables";
+import {
+  standard,
+} from "@styles/clazz";
+
 
 export const globalsClazz = css`
   :global() {
@@ -21,6 +25,12 @@ export const globalsClazz = css`
       scrollbar-color: rgba(0, 0, 0, 0.54);
       touch-action: manipulation;
       width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+      overscroll-behavior-y: none;
+      font-size: 15px;
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
     }
   
     body::-webkit-scrollbar {
@@ -43,8 +53,7 @@ export const globalsClazz = css`
     }
 
     body {
-      direction: ltr;
-      line-height: 1.34;
+      
       margin: 0;
       padding: 0;
       unicode-bidi: embed;
@@ -54,15 +63,23 @@ export const globalsClazz = css`
       -moz-osx-font-smoothing: grayscale;
 
       #root {
-        min-height: 100vh;
-        display: grid;
-        grid-template-rows: 1fr auto;
-        grid-template-columns: 100%;
+        ${standard}
+        flex: 1;
+        min-height: 603px;
+        height: 100vh;
+        width: 100%;
+        z-index: 0;
+        pointer-events: none!important;
+
+        ${Vars(env => ({
+  "background": env.themeColor
+}))};
+
       }
 
     }
 
-    svg {
+    /* svg {
       width: 100%;
       height: 100%;
       fill: currentColor;
@@ -72,16 +89,19 @@ export const globalsClazz = css`
   "transition-duration": env.fdsFas,
   "transition-timing-function": env.fdsSoft,
   "fill": env.secondaryIcon,
-}))};
+}))}; 
       
     }
-
+*/
     form {
       margin: 0;
       padding: 0
     }
 
     label {
+      ${Vars(env => ({
+        "color": env.textColor1
+      }))};
       cursor: default;
       font-weight: 600;
       vertical-align: middle
@@ -105,6 +125,9 @@ export const globalsClazz = css`
     h5,
     h6,
     p {
+      ${Vars(env => ({
+        "color": env.textColor1
+      }))};
       font-family: inherit;
       font-size: 13px;
       font-weight: 600;
