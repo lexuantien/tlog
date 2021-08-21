@@ -77,7 +77,7 @@ const Nav = () => {
     if (obj != undefined) {
       setSelectedNavVal(obj.value);
     } else {
-      setSelectedNavVal(-1);
+      setSelectedNavVal(-20);
     }
   }, [loc]);
 

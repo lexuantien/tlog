@@ -35,6 +35,8 @@ export const ThemesPkg = {
     borderTopColor: "rgb(239, 243, 244)",
     borderBottomColor: "transparent",
 
+    searchBackground: "rgb(239, 243, 244)",
+
     themeColor: "rgb(255, 255, 255)",
     darkColor: "rgba(255,255,255,1.00)",
 
@@ -66,6 +68,8 @@ export const ThemesPkg = {
     borderColor: "rgb(56, 68, 77)",
     borderTopColor: "rgb(56, 68, 77)",
     borderBottomColor: "rgb(61, 84, 102)",
+
+    searchBackground: "rgb(37, 51, 65)",
 
     themeColor: "rgb(21, 32, 43)",
 

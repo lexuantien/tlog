@@ -19,7 +19,7 @@ import {
 import { Vars, Vars2 } from "@styles/variables";
 import { styled } from "@linaria/react";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { css } from "@linaria/core";
 
 const SCircleL = styled(Link)`
@@ -81,6 +81,12 @@ const Circle = ({ onClick, btn, to, style, ...rest }) => {
       }
     }, 180);
   };
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(timeout)
+    };
+  });
 
   return (
     <>

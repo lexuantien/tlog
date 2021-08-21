@@ -15,6 +15,8 @@ import { Vars } from "@styles/variables";
 import Left from "./left";
 import Center from "./center";
 import Right from "./right";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const SHeaderG = styled.header`
   ${standard};
@@ -54,16 +56,23 @@ const SHeaderM = styled.div`
   ${flexRow};
 `;
 
+const hiddenHeaderRoutes = ["/compose/log"];
+
 const Header = () => {
+  const loc = useLocation();
   return (
-    <SHeaderG role="banner">
-      <SGap />
-      <SHeaderM>
-        <Left />
-        <Center />
-        <Right />
-      </SHeaderM>
-    </SHeaderG>
+    <>
+      {loc.pathname != "/compose/log" && (
+        <SHeaderG role="banner">
+          <SGap />
+          <SHeaderM>
+            <Left />
+            <Center />
+            <Right />
+          </SHeaderM>
+        </SHeaderG>
+      )}
+    </>
   );
 };
 

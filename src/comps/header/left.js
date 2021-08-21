@@ -66,7 +66,7 @@ export const Left = () => {
           onClick={() => {
             navigate(-1);
           }}
-          styled={{ marginLeft: "calc(-5px" }}
+          style={{ marginLeft: "calc(-5px)" }}
           btn={true}
         >
           <Icon name="back" />
