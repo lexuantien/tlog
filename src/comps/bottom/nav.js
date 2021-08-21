@@ -76,8 +76,10 @@ const Nav = () => {
     );
     if (obj != undefined) {
       setSelectedNavVal(obj.value);
+    } else {
+      setSelectedNavVal(-1);
     }
-  }, []);
+  }, [loc]);
 
   return (
     <SNavGeneral>

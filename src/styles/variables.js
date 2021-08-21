@@ -1,4 +1,7 @@
 // Create a small helper function to loop over the themes and create CSS rule sets
+
+import ThemeLSVal from "../utils/storage";
+
 // Use the helper in your styles
 export const Vars = (cb) =>
   Object.keys(ThemesPkg).reduce(
@@ -8,6 +11,10 @@ export const Vars = (cb) =>
       }),
     {}
   );
+
+export const Vars2 = (theme) =>{
+  return ThemesPkg[theme]  
+} 
 
 export const ThemesPkg = {
   light: {
@@ -40,6 +47,8 @@ export const ThemesPkg = {
     fdsFas: "200ms",
     fdsSoft: "cubic-bezier(0.08, 0.52, 0.52, 1)",
     secondaryIcon: "#65676b",
+
+    fontFamily: "TlogChirp, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
   },
   dark: {
     blue: "rgb(29,161,242)",
@@ -69,5 +78,7 @@ export const ThemesPkg = {
     fdsFas: "200ms",
     fdsSoft: "cubic-bezier(0.08, 0.52, 0.52, 1)",
     secondaryIcon: "#65676b",
+
+    fontFamily: "TlogChirp, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
   },
 };

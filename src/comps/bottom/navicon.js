@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { styled } from "@linaria/react";
-import { Link } from "react-router-dom";
-import Icons from "@comps/icons/nav/icon";
+import { Link, useLocation } from "react-router-dom";
+import Icons from "@comps/icons/icon";
 import { Vars } from "@styles/variables";
 import {
   standard,
@@ -15,7 +15,7 @@ import {
   flexColumn,
   flexgrow,
 } from "@styles/clazz";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SNavItem = styled(Link)`
   ${standard}
@@ -43,9 +43,18 @@ const SNavCircleButton = styled.div`
   margin: -8px;
   border-radius: 9999px;
 
-  background-color: ${(props) =>
-    props.$activebackground ? "rgba(255, 255, 255, 0.2)" : "transparent"};
+  /* background-color: ${(props) =>
+    props.$activebackground ? "rgba(255, 255, 255, 0.2)" : "transparent"};  */
 
+  .theme-dark & {
+    background-color: ${(props) =>
+      props.$activebackground ? "rgba(255, 255, 255, 0.2)" : "transparent"};
+  }
+
+  .theme-light & {
+    background-color: ${(props) =>
+      props.$activebackground ? "rgba(15, 20, 25, 0.2)" : "transparent"};
+  }
 
   svg {
     ${userSelectNone}
@@ -62,18 +71,10 @@ const SNavCircleButton = styled.div`
   }
 `;
 
-  /* .theme-dark & {
-    background-color: ${(props) =>
-    props.$activebackground ? "rgba(255, 255, 255, 0.2)" : "transparent"};
-  }
 
-  .theme-light & {
-    background-color: ${(props) =>
-    props.$activebackground ? "rgba(15, 20, 25, 0.2)" : "transparent"};
-  } */
-  
 const NavIcon = ({ selected, onChange, value, iconName, path, alabel }) => {
   const [backgroundActive, SetBackgroundActive] = useState(false);
+
   const timeout = setTimeout(() => {
     SetBackgroundActive(false);
   }, 180);

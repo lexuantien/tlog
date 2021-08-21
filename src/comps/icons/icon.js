@@ -1,5 +1,13 @@
 import PropTypes from "prop-types";
-import { Tweet, Home, Search, Notification, Bookmark } from "@comps/icons/nav";
+import {
+  Setting,
+  Tweet,
+  Home,
+  Search,
+  Notification,
+  Bookmark,
+  Back,
+} from "@comps/icons";
 
 const Icon = ({ name, active }) => {
   switch (name) {
@@ -13,6 +21,10 @@ const Icon = ({ name, active }) => {
       return <Bookmark active={active} />;
     case "notification":
       return <Notification active={active} />;
+    case "setting":
+      return <Setting />;
+    case "back":
+      return <Back />;
   }
 };
 

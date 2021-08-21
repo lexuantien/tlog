@@ -43,6 +43,10 @@ const routes = [
     path: "/compose/log",
     element: <p>create log</p>,
   },
+  {
+    path: "/settings",
+    element: <p>settings</p>,
+  },
 ];
 
 const App = () => {

@@ -13,7 +13,7 @@ import {
   flexgrow,
   flexRow,
 } from "@styles/clazz";
-import Icons from "@comps/icons/nav/icon";
+import Icons from "@comps/icons/icon";
 
 const StyledTweet = styled.aside`
   ${standard};

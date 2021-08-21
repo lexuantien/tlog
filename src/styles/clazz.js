@@ -38,6 +38,11 @@ export const flexstart = `
   align-items: flex-start;
 `;
 
+export const flexend = `
+  -webkit-box-align: end;
+  align-items: flex-end;
+`;
+
 export const basicInherit = `
   background-color: rgba(0, 0, 0, 0);
   color: inherit;
@@ -112,4 +117,12 @@ export const standard = `
   padding-top: 0px;
   position: relative;
   z-index: 0;
+`;
+
+
+export const nowrap = `
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;

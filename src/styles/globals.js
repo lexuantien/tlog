@@ -2,14 +2,10 @@ import { css } from "@linaria/core";
 
 import { fonts } from "./fonts";
 import { Vars } from "@styles/variables";
-import {
-  standard,
-} from "@styles/clazz";
-
+import { standard } from "@styles/clazz";
 
 export const globalsClazz = css`
   :global() {
-
     ${fonts}
 
     *,
@@ -30,9 +26,9 @@ export const globalsClazz = css`
       overscroll-behavior-y: none;
       font-size: 15px;
       -webkit-text-size-adjust: 100%;
-      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
-  
+
     body::-webkit-scrollbar {
       width: 12px;
     }
@@ -53,7 +49,6 @@ export const globalsClazz = css`
     }
 
     body {
-      
       margin: 0;
       padding: 0;
       unicode-bidi: embed;
@@ -69,44 +64,27 @@ export const globalsClazz = css`
         height: 100vh;
         width: 100%;
         z-index: 0;
-        pointer-events: none!important;
+        pointer-events: none !important;
 
-        ${Vars(env => ({
-  "background": env.themeColor
-}))};
-
+        ${Vars((env) => ({
+          background: env.themeColor,
+        }))};
       }
-
     }
 
-    /* svg {
-      width: 100%;
-      height: 100%;
-      fill: currentColor;
-      vertical-align: middle;
-      transition-property: fill,stroke;
-      ${Vars(env => ({
-  "transition-duration": env.fdsFas,
-  "transition-timing-function": env.fdsSoft,
-  "fill": env.secondaryIcon,
-}))}; 
-      
-    }
-*/
     form {
       margin: 0;
-      padding: 0
+      padding: 0;
     }
 
     label {
-      ${Vars(env => ({
-        "color": env.textColor1
+      ${Vars((env) => ({
+        color: env.textColor1,
       }))};
       cursor: default;
       font-weight: 600;
-      vertical-align: middle
+      vertical-align: middle;
     }
- 
 
     body,
     button,
@@ -114,7 +92,8 @@ export const globalsClazz = css`
     label,
     select,
     textarea {
-      font-family: 'TlogChirp', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: "TlogChirp", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
       font-size: 12px;
     }
 
@@ -125,62 +104,61 @@ export const globalsClazz = css`
     h5,
     h6,
     p {
-      ${Vars(env => ({
-        "color": env.textColor1
+      ${Vars((env) => ({
+        color: env.textColor1,
       }))};
       font-family: inherit;
       font-size: 13px;
       font-weight: 600;
       margin: 0;
-      padding: 0
+      padding: 0;
     }
 
     h1 {
-      font-size: 14px
+      font-size: 14px;
     }
 
     h4,
     h5,
     h6 {
-        font-size: 12px
+      font-size: 12px;
     }
 
     p {
-      margin: 1em 0
+      margin: 1em 0;
     }
 
     b,
     strong {
-      font-weight: 600
+      font-weight: 600;
     }
 
     a {
-    cursor: pointer;
-    text-decoration: none;
+      cursor: pointer;
+      text-decoration: none;
 
       &:hover {
-        text-decoration: underline
+        text-decoration: underline;
       }
     }
 
     button {
-      margin: 0
+      margin: 0;
     }
 
     img {
-      border: 0
+      border: 0;
     }
 
     hr {
       border-width: 0;
-      height: 1px
+      height: 1px;
     }
 
     ul {
       list-style-type: none;
       margin: 0;
-      padding: 0
+      padding: 0;
     }
-
   }
 `;

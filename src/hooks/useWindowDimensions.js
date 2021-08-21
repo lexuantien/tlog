@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 
 function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
+
+  // width minus scrollbar width
+  const { clientWidth: width, clientHeight: height } = document.body;
   return {
     width,
     height,

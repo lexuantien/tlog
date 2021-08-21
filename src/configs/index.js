@@ -26,3 +26,10 @@ export const navRoutes = [
     alabel: "notification",
   },
 ];
+
+export const simpleNavRoutes = [
+  "/home",
+  "/search",
+  "/bookmarks",
+  "/notifications",
+];
