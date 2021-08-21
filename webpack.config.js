@@ -60,10 +60,10 @@ if (process.env.NODE_ENV === "production") {
   );
 }
 
-// if (process.env.SERVE) {
-//   // We only want React Hot Reloading in serve mode
-//   plugins.push(new ReactRefreshWebpackPlugin());
-// }
+if (process.env.SERVE) {
+  // We only want React Hot Reloading in serve mode
+  plugins.push(new ReactRefreshWebpackPlugin());
+}
 
 module.exports = {
   // mode defaults to 'production' if not set

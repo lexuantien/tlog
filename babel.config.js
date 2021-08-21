@@ -1,12 +1,13 @@
 // Cannot load "react-refresh/babel" in production
 const plugins = [
-  [
+  // [
     // "babel-plugin-styled-components",
     // {
     //   displayName: false,
     // },
-  ],
+  // ],
 ];
+
 if (process.env.NODE_ENV !== "production") {
   plugins.push("react-refresh/babel");
 }
@@ -21,5 +22,5 @@ module.exports = {
     }],
     "@linaria"
   ],
-  // plugins: plugins,
+  plugins: plugins,
 };
