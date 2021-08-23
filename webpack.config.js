@@ -46,6 +46,10 @@ const plugins = [
         from: "./src/manifest.json",
         to: "",
       },
+      {
+        from: "./_redirects",
+        to: "",
+      },
     ],
   }),
 ];
