@@ -1,7 +1,7 @@
 {
   
-  "short_name": "React PWA",
-  "name": "React PWA Example",
+  "short_name": "TLog",
+  "name": "Tlog",
   "icons": [
     {
       "src": "favicon.ico",
