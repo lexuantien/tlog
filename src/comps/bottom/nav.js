@@ -56,7 +56,7 @@ const SHighlight = styled.div`
 
 const Nav = () => {
   const { pathname } = useLocation();
-  const { width } = useWindowDimensions();
+  // const { width } = useWindowDimensions();
   const [selectedNavVal, setSelectedNavVal] = useState(-1);
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const Nav = () => {
     if (obj != undefined) {
       setSelectedNavVal(obj.value);
     } else {
-      setSelectedNavVal(-20);
+      setSelectedNavVal(-1);
     }
   }, [pathname]);
 
@@ -85,10 +85,10 @@ const Nav = () => {
           />
         ))}
       </SNavContent>
-      <SHighlight
+      {/* <SHighlight
         $widthItem={width / navRoutes.length}
         $activeLength={selectedNavVal * (width / navRoutes.length)}
-      />
+      /> */}
     </SNavGeneral>
   );
 };
