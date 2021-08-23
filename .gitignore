@@ -2,7 +2,6 @@ node_modules
 .env
 .linaria-cache/
 .vscode/
-yarn.lock
 yarn-error.log
 package-lock.json
 

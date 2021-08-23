@@ -21,8 +21,8 @@ const plugins = [
   new CleanWebpackPlugin(),
   new MiniCssExtractPlugin(),
   new HtmlWebpackPlugin({
-    template: path.resolve(__dirname, "public/index.html"),
-    filename: "index.html",
+    template: "./src/index.html",
+    // filename: "index.html",
   }),
   new Dotenv({
     path: "./.env", // Path to .env file (this is the default)
