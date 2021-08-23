@@ -1,22 +1,12 @@
+import { useState } from "react";
 import { styled } from "@linaria/react";
-import {
-  standard,
-  basicInherit,
-  userSelectNone,
-  aCenter,
-  mLRAuto,
-  jCenter,
-  flex,
-  flexRow,
-  flexColumn,
-  flexstart,
-} from "@styles/clazz";
-import { Vars } from "@styles/variables";
+//
 import Avatar from "@comps/core/avatar";
-import Icon from "@comps/icons/icon";
-import Circle from "../core/circle";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import BackButton from "../core/backBtn";
+//
+import { useLocationChange } from "@hooks";
+import { Vars } from "@styles/variables";
+import { standard, jCenter, flexstart } from "@styles/clazz";
 import { simpleNavRoutes } from "@configs";
 
 const SLeft = styled.div`
@@ -44,33 +34,22 @@ const SLeft = styled.div`
 
 export const Left = () => {
   const [avatar, setAvatar] = useState(true);
-  const loc = useLocation();
-  const navigate = useNavigate();
-  //
 
-  useEffect(() => {
-    const obj = simpleNavRoutes.find((e) => e === loc.pathname);
+  useLocationChange((currLoc) => {
+    const obj = simpleNavRoutes.find((e) => e === currLoc.pathname);
     if (obj !== undefined && !avatar) {
       setAvatar(true);
     } else if (obj === undefined) {
       setAvatar(false);
     }
-  }, [loc]);
+  });
 
   return (
     <SLeft>
       {avatar ? (
         <Avatar />
       ) : (
-        <Circle
-          onClick={() => {
-            navigate(-1);
-          }}
-          style={{ marginLeft: "calc(-5px)" }}
-          btn={true}
-        >
-          <Icon name="back" />
-        </Circle>
+        <BackButton style={{ marginLeft: "calc(-5px)" }} />
       )}
     </SLeft>
   );

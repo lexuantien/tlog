@@ -1,24 +1,22 @@
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { styled } from "@linaria/react";
+//
+import Icon from "@comps/icons/icon";
+//
 import {
   standard,
   basicInherit,
   userSelectNone,
   aCenter,
-  mLRAuto,
   jCenter,
-  flex,
-  flexRow,
-  flexColumn,
   flexstart,
   flexshirk,
   flexgrow,
   nowrap,
 } from "@styles/clazz";
 import { Vars } from "@styles/variables";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-
-import Icon from "@comps/icons/icon";
+import { titleRoutes } from "@configs";
 
 const SCenterG = styled.div`
   ${standard}
@@ -86,6 +84,7 @@ const SSearchG = styled.div`
 `;
 
 const SSearchForm = styled.form`
+  width: 100%;
   min-height: 0px;
   box-sizing: border-box;
   -webkit-box-align: stretch;
@@ -186,49 +185,18 @@ const SSearchInput = styled.div`
   }
 `;
 
-const titleRoutes = [
-  {
-    path: "/home",
-    title: ["Home"],
-  },
-  {
-    path: "/bookmarks",
-    title: ["Bookmarks"],
-  },
-  {
-    path: "/notifications",
-    title: ["Notifications"],
-  },
-  {
-    path: "/settings",
-    title: ["Settings", true],
-  },
-  {
-    path: "/settings/search",
-    title: ["Search settings"],
-  },
-  {
-    path: "/settings/bookmarks",
-    title: ["Bookmarks", true],
-  },
-  {
-    path: "/settings/notifications",
-    title: ["Notifications", true],
-  },
-];
-
 const Center = () => {
   const [title, setTitle] = useState(null);
-  const [search, setSearch] = useState(false);
-  const loc = useLocation();
+  const { pathname } = useLocation();
+
   useEffect(() => {
-    const titleObj = titleRoutes.find((e) => e.path === loc.pathname);
+    const titleObj = titleRoutes.find((e) => e.path === pathname);
     if (titleObj != undefined) {
       setTitle(titleObj.title);
     } else {
       setTitle(null);
     }
-  }, [loc]);
+  }, [pathname]);
 
   return (
     <>
@@ -245,7 +213,7 @@ const Center = () => {
         </SCenterG>
       ) : (
         <>
-          {loc.pathname == "/search" && (
+          {pathname === "/search" && (
             <SSearchG>
               <SSearchForm>
                 <SSearchCircle>
@@ -259,17 +227,17 @@ const Center = () => {
                         aria-label="Search query"
                         aria-autocomplete="list"
                         aria-owns="typeaheadDropdown-1"
-                        autocapitalize="sentences"
-                        autocomplete="off"
-                        autocorrect="off"
+                        autoCapitalize="sentences"
+                        autoComplete="off"
+                        autoCorrect="off"
                         placeholder="Search Log"
                         role="combobox"
-                        spellcheck="false"
-                        enterkeyhint="search"
+                        spellCheck="false"
+                        enterKeyHint="search"
                         type="text"
                         dir="auto"
                         aria-expanded="true"
-                        autofocus=""
+                        autoFocus=""
                       />
                     </SSearchInput>
                   </label>

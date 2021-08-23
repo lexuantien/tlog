@@ -1,6 +1,8 @@
 import { styled } from "@linaria/react";
 import { Link } from "react-router-dom";
-
+//
+import Icons from "@comps/icons/icon";
+//
 import { Vars } from "@styles/variables";
 import {
   standard,
@@ -13,7 +15,6 @@ import {
   flexgrow,
   flexRow,
 } from "@styles/clazz";
-import Icons from "@comps/icons/icon";
 
 const StyledTweet = styled.aside`
   ${standard};
@@ -93,10 +94,7 @@ const Tweet = () => {
     <StyledTweet role="complementary">
       <div>
         <StyledLink aria-label="Compose a log" role="link" to="/compose/log">
-          {/* <div> */}
           <Icons name="tweet" />
-          {/* <span /> */}
-          {/* </div> */}
         </StyledLink>
       </div>
     </StyledTweet>

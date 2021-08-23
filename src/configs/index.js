@@ -33,3 +33,34 @@ export const simpleNavRoutes = [
   "/bookmarks",
   "/notifications",
 ];
+
+export const titleRoutes = [
+  {
+    path: "/home",
+    title: ["Home"],
+  },
+  {
+    path: "/bookmarks",
+    title: ["Bookmarks"],
+  },
+  {
+    path: "/notifications",
+    title: ["Notifications"],
+  },
+  {
+    path: "/settings",
+    title: ["Settings", true],
+  },
+  {
+    path: "/settings/search",
+    title: ["Search settings"],
+  },
+  {
+    path: "/settings/bookmarks",
+    title: ["Bookmarks", true],
+  },
+  {
+    path: "/settings/notifications",
+    title: ["Notifications", true],
+  },
+];

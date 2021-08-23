@@ -59,10 +59,10 @@ const SHeaderM = styled.div`
 const hiddenHeaderRoutes = ["/compose/log"];
 
 const Header = () => {
-  const loc = useLocation();
+  const { pathname } = useLocation();
   return (
     <>
-      {loc.pathname != "/compose/log" && (
+      {pathname != "/compose/log" && (
         <SHeaderG role="banner">
           <SGap />
           <SHeaderM>

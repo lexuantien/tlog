@@ -1,21 +1,21 @@
-import PropTypes from "prop-types";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { styled } from "@linaria/react";
-import { Link, useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
+//
 import Icons from "@comps/icons/icon";
+//
 import { Vars } from "@styles/variables";
 import {
   standard,
   basicInherit,
   userSelectNone,
   aCenter,
-  mLRAuto,
   jCenter,
   flex,
-  flexRow,
   flexColumn,
   flexgrow,
 } from "@styles/clazz";
-import { useEffect, useState } from "react";
 
 const SNavItem = styled(Link)`
   ${standard}
@@ -70,7 +70,6 @@ const SNavCircleButton = styled.div`
     fill: currentColor;
   }
 `;
-
 
 const NavIcon = ({ selected, onChange, value, iconName, path, alabel }) => {
   const [backgroundActive, SetBackgroundActive] = useState(false);

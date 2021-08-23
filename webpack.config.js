@@ -1,13 +1,12 @@
 const path = require("path");
+const webpack = require("webpack");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
-const {
-  CleanWebpackPlugin
-} = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
@@ -16,6 +15,9 @@ let mode = "development";
 let target = "web";
 
 const plugins = [
+  mode === "development" && new ReactRefreshWebpackPlugin(),
+  mode === "development" && new webpack.HotModuleReplacementPlugin(),
+
   new CleanWebpackPlugin(),
   new MiniCssExtractPlugin(),
   new HtmlWebpackPlugin({
@@ -27,22 +29,23 @@ const plugins = [
     systemvars: true,
   }),
   new CopyPlugin({
-    patterns: [{
-      from: "./src/images/pwa/favicon.ico",
-      to: ""
-    },
-    {
-      from: "./src/images/pwa/logo192.png",
-      to: ""
-    },
-    {
-      from: "./src/images/pwa/logo512.png",
-      to: ""
-    },
-    {
-      from: "./src/manifest.json",
-      to: ""
-    },
+    patterns: [
+      {
+        from: "./src/images/pwa/favicon.ico",
+        to: "",
+      },
+      {
+        from: "./src/images/pwa/logo192.png",
+        to: "",
+      },
+      {
+        from: "./src/images/pwa/logo512.png",
+        to: "",
+      },
+      {
+        from: "./src/manifest.json",
+        to: "",
+      },
     ],
   }),
 ];
@@ -60,10 +63,10 @@ if (process.env.NODE_ENV === "production") {
   );
 }
 
-if (process.env.SERVE) {
-  // We only want React Hot Reloading in serve mode
-  plugins.push(new ReactRefreshWebpackPlugin());
-}
+// if (process.env.SERVE) {
+//   // We only want React Hot Reloading in serve mode
+//   plugins.push(new ReactRefreshWebpackPlugin());
+// }
 
 module.exports = {
   // mode defaults to 'production' if not set
@@ -84,80 +87,83 @@ module.exports = {
   },
 
   module: {
-    rules: [{
-      test: /\.(s[ac]|c)ss$/i,
-      use: [{
-        loader: MiniCssExtractPlugin.loader,
-        // This is required for asset imports in CSS, such as url()
-        options: {
-          publicPath: ""
-        },
+    rules: [
+      {
+        test: /\.(s[ac]|c)ss$/i,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            // This is required for asset imports in CSS, such as url()
+            options: {
+              publicPath: "",
+            },
+          },
+          "css-loader",
+          "postcss-loader",
+          // according to the docs, sass-loader should be at the bottom, which
+          // loads it first to avoid prefixes in your sourcemaps and other issues.
+          "sass-loader",
+        ],
       },
-        "css-loader",
-        "postcss-loader",
-        // according to the docs, sass-loader should be at the bottom, which
-        // loads it first to avoid prefixes in your sourcemaps and other issues.
-        "sass-loader",
-      ],
-    },
-    {
-      test: /\.(woff(2)?|ttf|otf|eot|png|jpe?g|gif|svg)$/i,
-      /**
-       * The `type` setting replaces the need for "url-loader"
-       * and "file-loader" in Webpack 5.
-       *
-       * setting `type` to "asset" will automatically pick between
-       * outputing images to a file, or inlining them in the bundle as base64
-       * with a default max inline size of 8kb
-       */
-      type: "asset",
+      {
+        test: /\.(woff(2)?|ttf|otf|eot|png|jpe?g|gif|svg)$/i,
+        /**
+         * The `type` setting replaces the need for "url-loader"
+         * and "file-loader" in Webpack 5.
+         *
+         * setting `type` to "asset" will automatically pick between
+         * outputing images to a file, or inlining them in the bundle as base64
+         * with a default max inline size of 8kb
+         */
+        type: "asset",
 
-      /**
-       * If you want to inline larger images, you can set
-       * a custom `maxSize` for inline like so:
-       */
-      // parser: {
-      //   dataUrlCondition: {
-      //     maxSize: 30 * 1024,
-      //   },
-      // },
-    },
-    {
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      use: [
-        {
-          // without additional settings, this will reference .babelrc
-          loader: "babel-loader",
-          options: {
-            /**
-             * From the docs: When set, the given directory will be used
-             * to cache the results of the loader. Future webpack builds
-             * will attempt to read from the cache to avoid needing to run
-             * the potentially expensive Babel recompilation process on each run.
-             */
-            cacheDirectory: true,
+        /**
+         * If you want to inline larger images, you can set
+         * a custom `maxSize` for inline like so:
+         */
+        // parser: {
+        //   dataUrlCondition: {
+        //     maxSize: 30 * 1024,
+        //   },
+        // },
+      },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            // without additional settings, this will reference .babelrc
+            loader: "babel-loader",
+            options: {
+              /**
+               * From the docs: When set, the given directory will be used
+               * to cache the results of the loader. Future webpack builds
+               * will attempt to read from the cache to avoid needing to run
+               * the potentially expensive Babel recompilation process on each run.
+               */
+              cacheDirectory: true,
+            },
           },
-        },
-        {
-          loader: '@linaria/webpack-loader',
-          options: {
-            sourceMap: process.env.NODE_ENV !== 'production',
-            cacheDirectory: '.linaria-cache',
+          {
+            loader: "@linaria/webpack-loader",
+            options: {
+              sourceMap: process.env.NODE_ENV !== "production",
+              cacheDirectory: ".linaria-cache",
+            },
           },
-        }],
-    },
+        ],
+      },
     ],
   },
 
-  plugins: plugins,
+  plugins: plugins.filter(Boolean),
 
   target: target,
 
   devtool: "source-map",
 
   resolve: {
-    extensions: [".wasm", ".mjs", ".js", ".jsx", ".json"],
+    extensions: [".js", ".jsx"],
     alias: {
       //
       "@comps": path.resolve(__dirname, "src/comps"),

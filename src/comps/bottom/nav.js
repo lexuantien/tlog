@@ -1,22 +1,12 @@
 import { useEffect, useState } from "react";
-import { styled } from "@linaria/react";
-import { Vars } from "@styles/variables";
-import {
-  standard,
-  basicInherit,
-  userSelectNone,
-  aCenter,
-  mLRAuto,
-  jCenter,
-  flex,
-  flexRow,
-  flexColumn,
-} from "@styles/clazz";
-import NavIcon from "./navicon";
-import { useWindowDimensions } from "@hooks";
 import { useLocation } from "react-router-dom";
-// import {} from "react-router-dom";
-
+import { styled } from "@linaria/react";
+//
+import NavIcon from "./navicon";
+//
+import { Vars } from "@styles/variables";
+import { standard, mLRAuto, flexRow } from "@styles/clazz";
+import { useWindowDimensions } from "@hooks";
 import { navRoutes } from "@configs";
 
 const SNavGeneral = styled.div`
@@ -65,21 +55,20 @@ const SHighlight = styled.div`
 `;
 
 const Nav = () => {
-  const loc = useLocation();
+  const { pathname } = useLocation();
   const { width } = useWindowDimensions();
   const [selectedNavVal, setSelectedNavVal] = useState(-1);
 
   useEffect(() => {
     const obj = navRoutes.find(
-      (el) => el.path === (loc.pathname === "/" ? "/home" : loc.pathname)
-      // (el) => el.path === loc.pathname
+      (el) => el.path === (pathname === "/" ? "/home" : pathname)
     );
     if (obj != undefined) {
       setSelectedNavVal(obj.value);
     } else {
       setSelectedNavVal(-20);
     }
-  }, [loc]);
+  }, [pathname]);
 
   return (
     <SNavGeneral>

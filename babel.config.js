@@ -22,5 +22,5 @@ module.exports = {
     }],
     "@linaria"
   ],
-  plugins: plugins,
+  // plugins: plugins,
 };

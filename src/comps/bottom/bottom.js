@@ -1,10 +1,11 @@
 import { useLocation } from "react-router-dom";
 import { styled } from "@linaria/react";
-
-import { standard } from "@styles/clazz";
-import { excludeRoutes } from "@configs";
+//
 import Tweet from "./tweet";
 import Nav from "./nav";
+//
+import { standard } from "@styles/clazz";
+import { excludeRoutes } from "@configs";
 
 const SBottom = styled.div`
   ${standard};
@@ -16,10 +17,10 @@ const SBottom = styled.div`
 `;
 
 const Bottom = () => {
-  const loc = useLocation();
+  const { pathname } = useLocation();
   return (
     <SBottom>
-      {excludeRoutes.find((r) => r !== loc.pathname) && (
+      {excludeRoutes.find((r) => r !== pathname) && (
         <>
           <Tweet />
           <Nav />

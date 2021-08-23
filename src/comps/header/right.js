@@ -1,26 +1,14 @@
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { styled } from "@linaria/react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import {
-  standard,
-  basicInherit,
-  userSelectNone,
-  aCenter,
-  mLRAuto,
-  jCenter,
-  flex,
-  flexRow,
-  flexColumn,
-  flexstart,
-  flexshirk,
-  flexgrow,
-  nowrap,
-  flexend,
-} from "@styles/clazz";
-import { Vars } from "@styles/variables";
+//
+
 import Icon from "@comps/icons/icon";
 import Circle from "../core/circle";
-import React, { useEffect, useState } from "react";
+//
 import { simpleNavRoutes } from "@configs";
+import { standard, aCenter, jCenter, flexend } from "@styles/clazz";
+import { Vars } from "@styles/variables";
 
 const SRight = styled.div`
   ${standard}
@@ -47,31 +35,31 @@ const SRight = styled.div`
 `;
 
 const Right = () => {
-  const [appendLoc, setAppendLoc] = useState("");
-  const [hidden, setHidden] = useState(false);
+  const [appendLoccation, setAppendLoccation] = useState("");
+  const [hiddenSetting, setHiddenSetting] = useState(false);
 
-  const loc = useLocation();
+  const { pathname } = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const obj = simpleNavRoutes.find((e) => e == loc.pathname);
+    const obj = simpleNavRoutes.find((e) => e === pathname);
     if (obj != undefined) {
-      setHidden(false);
-      obj === "/home" ? setAppendLoc("") : setAppendLoc(loc.pathname);
+      setHiddenSetting(false);
+      obj === "/home" ? setAppendLoccation("") : setAppendLoccation(pathname);
     } else {
-      setHidden(true);
+      setHiddenSetting(true);
     }
-  }, [loc]);
+  }, [pathname]);
 
   return (
     <>
-      {!hidden && (
+      {!hiddenSetting && (
         <SRight>
           <Circle
             style={{ marginRight: "calc(-9px)" }}
             btn={true}
             onClick={() => {
-              navigate(`/settings${appendLoc}`);
+              navigate(`/settings${appendLoccation}`);
             }}
           >
             <Icon name="setting" />

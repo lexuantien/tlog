@@ -1,10 +1,12 @@
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import ThemeLSVal from "@utils/storage";
-import registerServiceWorker from './serviceWorkerRegistration';
+import registerServiceWorker from "./serviceWorkerRegistration";
 
-import { App } from '@pages'
-import { globalsClazz } from "@styles/globals"
+import { App } from "@pages";
+import { globalsClazz } from "@styles/globals";
+
+import { createBrowserHistory } from "history";
 
 if (typeof window !== "undefined") {
   // eslint-disable-next-line global-require
@@ -12,8 +14,8 @@ if (typeof window !== "undefined") {
 }
 
 // '0' to assign the first (and only `HTML` tag)
-var html = document.getElementsByTagName('html')[0];
-html.setAttribute('class', `theme-${ThemeLSVal()} ${globalsClazz}`);
+var html = document.getElementsByTagName("html")[0];
+html.setAttribute("class", `theme-${ThemeLSVal()} ${globalsClazz}`);
 
 ReactDOM.render(
   <BrowserRouter>
