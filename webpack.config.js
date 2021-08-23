@@ -1,5 +1,5 @@
 const path = require("path");
-const webpack = require("webpack");
+// const webpack = require("webpack");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -15,8 +15,8 @@ let mode = "development";
 let target = "web";
 
 const plugins = [
-  mode === "development" && new ReactRefreshWebpackPlugin(),
-  mode === "development" && new webpack.HotModuleReplacementPlugin(),
+  // mode === "development" && new ReactRefreshWebpackPlugin(),
+  // mode === "development" && new webpack.HotModuleReplacementPlugin(),
 
   new CleanWebpackPlugin(),
   new MiniCssExtractPlugin(),
@@ -63,10 +63,10 @@ if (process.env.NODE_ENV === "production") {
   );
 }
 
-// if (process.env.SERVE) {
-//   // We only want React Hot Reloading in serve mode
-//   plugins.push(new ReactRefreshWebpackPlugin());
-// }
+if (process.env.SERVE) {
+  // We only want React Hot Reloading in serve mode
+  plugins.push(new ReactRefreshWebpackPlugin());
+}
 
 module.exports = {
   // mode defaults to 'production' if not set
@@ -156,7 +156,7 @@ module.exports = {
     ],
   },
 
-  plugins: plugins.filter(Boolean),
+  plugins: plugins,
 
   target: target,
 
