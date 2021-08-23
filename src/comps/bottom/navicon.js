@@ -76,10 +76,17 @@ const NavIcon = ({ selected, onChange, value, iconName, path, alabel }) => {
 
   const timeout = setTimeout(() => {
     SetBackgroundActive(false);
-  }, 180);
+  }, 80);
 
   return (
     <SNavItem
+      // onTouchStart={() => {
+      //   SetBackgroundActive(true);
+      // }}
+      // onTouchEnd={() => {
+      //   SetBackgroundActive(false);
+      //   onChange(value);
+      // }}
       onClick={() => {
         SetBackgroundActive(true);
         clearTimeout(timeout);

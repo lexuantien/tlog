@@ -50,12 +50,17 @@ export const globalsClazz = css`
 
     body {
       margin: 0;
-      padding: 0;
+      /* padding: 0; */
       unicode-bidi: embed;
 
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+
+      padding: constant(safe-area-inset-top) constant(safe-area-inset-right)
+        constant(safe-area-inset-bottom) constant(safe-area-inset-left);
+      padding: env(safe-area-inset-top) env(safe-area-inset-right)
+        env(safe-area-inset-bottom) env(safe-area-inset-left);
 
       #root {
         ${standard}
