@@ -4,12 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "webpack-dev-server": "webpack-dev-server",
     "start": "cross-env SERVE=true webpack serve",
-    "build": "cross-env NODE_ENV=production webpack",
-    "serve": "yarn build && serve -s dist",
-    "build-dev": "webpack",
     "watch": "webpack --watch",
+    "build": "cross-env NODE_ENV=production webpack",
+    "build-dev": "webpack",
     "clean": "rm -rf ./dist"
   },
   "keywords": [],

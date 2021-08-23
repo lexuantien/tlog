@@ -25,3 +25,6 @@ ReactDOM.render(
 );
 
 registerServiceWorker();
+// ,
+//     "webpack-dev-server": "webpack-dev-server",
+//     "serve": "yarn build && serve -s dist"
