@@ -3,10 +3,10 @@
   command = "yarn build"
   edge_handlers = "src/edge-handlers"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
 
 [[redirects]]
   from = "/login"
