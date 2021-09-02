@@ -46,10 +46,10 @@ const plugins = [
         from: "./src/manifest.json",
         to: "",
       },
-      {
-        from: "./src/login.html",
-        to: "",
-      },
+      // {
+      //   from: "./src/login.html",
+      //   to: "",
+      // },
       // {
       //   from: "./_redirects",
       //   to: "",
