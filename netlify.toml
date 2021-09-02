@@ -4,12 +4,13 @@
   edge_handlers = "src/edge-handlers"
 
 [[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
   from = "/login"
   to = "/login.html"
   status = 200
   edge_handlers = "onEvent"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
