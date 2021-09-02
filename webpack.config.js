@@ -3,6 +3,7 @@ const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const PreloadWebpackPlugin = require("preload-webpack-plugin");
 
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
@@ -23,6 +24,15 @@ const plugins = [
   new HtmlWebpackPlugin({
     template: "./src/index.html",
     // filename: "index.html",
+  }),
+  new PreloadWebpackPlugin({
+    rel: "preload",
+    as(entry) {
+      if (/\.css$/.test(entry)) return "style";
+      if (/\.woff$/.test(entry)) return "font";
+      if (/\.png|jpe?g$/.test(entry)) return "image";
+      return "script";
+    },
   }),
   new Dotenv({
     path: "./.env", // Path to .env file (this is the default)
@@ -46,10 +56,6 @@ const plugins = [
         from: "./src/manifest.json",
         to: "",
       },
-      // {
-      //   from: "./src/login.html",
-      //   to: "",
-      // },
       // {
       //   from: "./_redirects",
       //   to: "",

@@ -1,21 +1,9 @@
 import { styled } from "@linaria/react";
-import {
-  standard,
-  basicInherit,
-  userSelectNone,
-  aCenter,
-  mLRAuto,
-  jCenter,
-  flex,
-  flexRow,
-  flexColumn,
-  flexstart,
-} from "@styles/clazz";
+import { standard, userSelectNone, mLRAuto, flexRow } from "@styles/clazz";
 import { Vars } from "@styles/variables";
 import Left from "./left";
 import Center from "./center";
 import Right from "./right";
-import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 const SHeaderG = styled.header`

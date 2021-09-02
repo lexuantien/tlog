@@ -1,18 +1,9 @@
 import { styled } from "@linaria/react";
-import { useRoutes, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useRoutes, useNavigate, Navigate } from "react-router-dom";
 import { Bottom } from "@comps/bottom";
 import { Header } from "@comps/header";
 import {
   standard,
-  basicInherit,
-  userSelectNone,
-  aCenter,
-  mLRAuto,
-  jCenter,
-  flex,
-  flexRow,
-  flexColumn,
 } from "@styles/clazz";
 
 const SContainer = styled.div`
@@ -23,6 +14,10 @@ const SContainer = styled.div`
 `;
 
 const routes = [
+  {
+    path: "/",
+    element: <Navigate to="/home" />,
+  },
   {
     path: "/home",
     element: <p>Home</p>,
@@ -51,13 +46,6 @@ const routes = [
 
 const App = () => {
   let element = useRoutes(routes);
-  let navigate = useNavigate();
-
-  useEffect(() => {
-    if (location.pathname == "/") {
-      navigate("/home");
-    }
-  }, []);
 
   return (
     <>
