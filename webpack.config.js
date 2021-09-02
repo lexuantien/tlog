@@ -47,9 +47,13 @@ const plugins = [
         to: "",
       },
       {
-        from: "./_redirects",
+        from: "./src/login.html",
         to: "",
       },
+      // {
+      //   from: "./_redirects",
+      //   to: "",
+      // },
     ],
   }),
 ];

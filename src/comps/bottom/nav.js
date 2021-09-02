@@ -34,29 +34,8 @@ const SNavContent = styled.nav`
   background-color: "inherit";
 `;
 
-const SHighlight = styled.div`
-  position: absolute;
-
-  top: 0;
-  left: 0;
-
-  width: ${(props) => props.$widthItem + `px`};
-  height: 3px;
-
-  ${Vars((env) => ({
-    background: env.iconColor,
-  }))};
-
-  border-radius: 4px;
-
-  transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-delay: 0.1s;
-  transform: translate(calc(${(props) => props.$activeLength}px));
-`;
-
 const Nav = () => {
   const { pathname } = useLocation();
-  // const { width } = useWindowDimensions();
   const [selectedNavVal, setSelectedNavVal] = useState(-1);
 
   useEffect(() => {
@@ -85,10 +64,6 @@ const Nav = () => {
           />
         ))}
       </SNavContent>
-      {/* <SHighlight
-        $widthItem={width / navRoutes.length}
-        $activeLength={selectedNavVal * (width / navRoutes.length)}
-      /> */}
     </SNavGeneral>
   );
 };

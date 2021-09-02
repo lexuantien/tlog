@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { styled } from "@linaria/react";
 import PropTypes from "prop-types";
 //
@@ -35,16 +35,6 @@ const SNavItem = styled(Link)`
 
 const SNavCircleButton = styled.div`
   ${standard}
-  margin-top: -6px;
-  transition-property: background-color, box-shadow;
-  transition-duration: 0.2s;
-  max-width: 100%;
-  padding: 8px;
-  margin: -8px;
-  border-radius: 9999px;
-
-  /* background-color: ${(props) =>
-    props.$activebackground ? "rgba(255, 255, 255, 0.2)" : "transparent"};  */
 
   .theme-dark & {
     background-color: ${(props) =>
@@ -55,6 +45,14 @@ const SNavCircleButton = styled.div`
     background-color: ${(props) =>
       props.$activebackground ? "rgba(15, 20, 25, 0.2)" : "transparent"};
   }
+
+  margin-top: -6px;
+  transition-property: background-color, box-shadow;
+  transition-duration: 0.2s;
+  max-width: 100%;
+  padding: 8px;
+  margin: -8px;
+  border-radius: 9999px;
 
   svg {
     ${userSelectNone}
@@ -71,23 +69,26 @@ const SNavCircleButton = styled.div`
   }
 `;
 
-const NavIcon = ({ selected, onChange, value, iconName, path, alabel }) => {
+const NavIcon = ({
+  selected,
+  onChange,
+  value,
+  iconName,
+  path,
+  alabel,
+  pre,
+}) => {
   const [backgroundActive, SetBackgroundActive] = useState(false);
-
+  const { pathname } = useLocation();
   const timeout = setTimeout(() => {
     SetBackgroundActive(false);
   }, 80);
 
   return (
     <SNavItem
-      // onTouchStart={() => {
-      //   SetBackgroundActive(true);
-      // }}
-      // onTouchEnd={() => {
-      //   SetBackgroundActive(false);
-      //   onChange(value);
-      // }}
       onClick={() => {
+        // reload query + show spiner + navigate scroll to top
+        // pathname === path && console.log(pathname);
         SetBackgroundActive(true);
         clearTimeout(timeout);
         onChange(value);
