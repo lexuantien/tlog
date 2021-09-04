@@ -94,11 +94,11 @@ const App = () => {
           <TopHeader />
           <SMain role="main">
             <SBackgroundColor>
-              <SPadding>
+              {/* <SPadding> */}
               <SSection aria-labelledby="accessible-list-5" role="region">
                 <RoutesConfig />
               </SSection>
-              </SPadding>
+              {/* </SPadding> */}
             </SBackgroundColor>
           </SMain>
         </SContainer>
