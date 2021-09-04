@@ -20,13 +20,14 @@ import { cx, css } from "@linaria/core";
 
 const SLoginContainer = styled.div`
   /*  */
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 15px;
   margin-right: auto;
   margin-left: auto;
   /*  */
   width: 100%;
-  min-height: 100vh;
+  /* height: 100vh; */
+  flex: 1;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -223,7 +224,7 @@ const Login = () => {
         </SLogo>
         <SLoginTitle>
           <span>
-            Log for hooman named <span style={{textDecoration:"underline", color:"rgb(29, 161, 242)"}}>T</span>
+            For hooman named <span style={{textDecoration:"underline", color:"rgb(29, 161, 242)"}}>T</span>
           </span>
         </SLoginTitle>
         <SLoginButton>
