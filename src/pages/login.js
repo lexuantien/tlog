@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { styled } from "@linaria/react";
 //
 import {
@@ -12,10 +12,11 @@ import {
 } from "@styles/clazz";
 import Icon from "@comps/icons/icon";
 //
-import { AuthContext } from "@contexts";
+import { login } from "../contexts/auth";
 import { Vars } from "@styles/variables";
 import { useContext } from "react";
 import Cookies from "js-cookie";
+import { cx, css } from "@linaria/core";
 
 const SLoginContainer = styled.div`
   /*  */
@@ -37,7 +38,7 @@ const SLogo = styled.div`
   ${standardDiv}
   line-height: 49px;
   letter-spacing: -0.8px;
-  font-size: 38px;
+  font-size: 44px;
   font-family: TlogChirpExtendedHeavy, Verdana, -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
@@ -74,7 +75,7 @@ const SLoginTitle = styled.div`
   min-width: 0px;
 
   margin-top: 10px;
-  span {
+  > span {
     ${standardDiv}
     font-family: inherit;
     overflow-wrap: break-word;
@@ -207,25 +208,23 @@ const STermText = styled.div`
 `;
 
 const Login = () => {
-  const Auth = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const handleOnClick = () => {
-    Auth.setAuth(true);
-    Cookies.set("user","loginTrue");
+    login(navigate);
   };
 
   return (
     <>
       <SLoginContainer>
         <SLogo>
-          <span
-            style={{ textDecoration: "underline", color: "rgb(29,161,242)" }}
-          >
-            T
-          </span>
-          LOG
+          <span style={{textDecoration:"underline", color:"rgb(29, 161, 242)"}}>T</span>
+          <span>LOG</span>
         </SLogo>
         <SLoginTitle>
-          <span>Join TLog today.</span>
+          <span>
+            Log for hooman named <span style={{textDecoration:"underline", color:"rgb(29, 161, 242)"}}>T</span>
+          </span>
         </SLoginTitle>
         <SLoginButton>
           <SButton role="button" tabindex="0" onClick={handleOnClick}>

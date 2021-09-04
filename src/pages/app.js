@@ -1,17 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Navigate, Routes, Route } from "react-router-dom";
+import React, { useContext, useEffect, useMemo, useState } from "react";
+import { Navigate, Routes, Route, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { styled } from "@linaria/react";
 //
 import { Bottom as BottomNav } from "@comps/bottom";
 import { Header as TopHeader } from "@comps/header";
-import { PrivateRoute, LoginRoute } from "../comps/routes";
+import { PrivateRoute, PublicRoute } from "../comps/routes";
 //
 import Login from "./login";
 //
 import { AuthContext } from "@contexts";
 import { standard } from "@styles/clazz";
 import { Vars } from "@styles/variables";
+import { isLogin, logout } from "../contexts/auth";
 
 const SContainer = styled.div`
   ${standard};
@@ -75,20 +76,22 @@ const SSection = styled.section`
 `;
 
 const App = () => {
-  const [auth, setAuth] = useState(false);
-  const readCookie = () => {
-    const user = Cookies.get("user");
-    if (user) {
-      setAuth(true);
-    }
-  };
-  useEffect(() => {
-    readCookie();
-  }, []);
+  const [auth, setAuth] = useState(null);
+  const value = useMemo(() => ({ auth, setAuth }), [auth, setAuth]);
+  // const readCookie = () => {
+  //   const user = Cookies.get("user");
+  //   if (user) {
+  //     setAuth(true);
+  //   }
+  // };
+  // useEffect(() => {
+  //   console.log(1);
+  //   readCookie();
+  // }, []);
 
   return (
     <>
-      <AuthContext.Provider value={{ auth, setAuth }}>
+      <AuthContext.Provider value={value}>
         <BottomNav />
         <SContainer aria-hidden="false">
           <TopHeader />
@@ -108,79 +111,30 @@ const App = () => {
 };
 
 const Home = () => {
-  const Auth = React.useContext(AuthContext);
+  const navigate = useNavigate();
   const handleOnClick = () => {
-    Auth.setAuth(false);
-    Cookies.remove("user");
+    logout(navigate);
   };
   return (
     <>
       <div>
         <button onClick={handleOnClick}>Logout</button>
       </div>
-      <div>
-        
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home</p>
-        <p>home3</p>
-        <p>home2</p>
-        <p>home1</p>
-      </div>
     </>
   );
 };
 
 const RoutesConfig = () => {
-  const Auth = React.useContext(AuthContext);
   return (
     <Routes>
-      <LoginRoute path="/login" auth={Auth.auth} element={<Login />} />
-      <PrivateRoute
-        path="/"
-        auth={Auth.auth}
-        element={<Navigate to="/home" />}
-      />
-      <PrivateRoute path="/home" auth={Auth.auth} element={<Home />} />
-      <PrivateRoute path="/search" auth={Auth.auth} element={<p>search</p>} />
-      <PrivateRoute
-        path="/bookmarks"
-        auth={Auth.auth}
-        element={<p>bookmarks</p>}
-      />
-      <PrivateRoute
-        path="/notifications"
-        auth={Auth.auth}
-        element={<p>notifications</p>}
-      />
-      <PrivateRoute
-        path="/compose/log"
-        auth={Auth.auth}
-        element={<p>compose/log</p>}
-      />
-      <PrivateRoute
-        path="/settings"
-        auth={Auth.auth}
-        element={<p>settings</p>}
-      />
+      <PublicRoute path="/login" restricted={true} element={<Login />} />
+      <PrivateRoute path="/" element={<Navigate to="/home" />} />
+      <PrivateRoute path="/home" element={<Home />} />
+      <PrivateRoute path="/search" element={<p>search</p>} />
+      <PrivateRoute path="/bookmarks" element={<p>bookmarks</p>} />
+      <PrivateRoute path="/notifications" element={<p>notifications</p>} />
+      <PrivateRoute path="/compose/log" element={<p>compose/log</p>} />
+      <PrivateRoute path="/settings" element={<p>settings</p>} />
     </Routes>
   );
 };

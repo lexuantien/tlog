@@ -7,6 +7,7 @@ import Right from "./right";
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "@contexts";
 import { useContext } from "react";
+import { isLogin } from "../../contexts/auth";
 
 const SHeaderG = styled.header`
   ${standard};
@@ -49,12 +50,10 @@ const SHeaderM = styled.div`
 const hiddenHeaderRoutes = ["/compose/log"];
 
 const Header = () => {
-  const Auth = useContext(AuthContext);
-  console.log(Auth.auth)
   const { pathname } = useLocation();
   return (
     <>
-      {Auth.auth && pathname != "/compose/log" && (
+      {isLogin() && pathname != "/compose/log" && (
         <SHeaderG role="banner">
           <SGap />
           <SHeaderM>

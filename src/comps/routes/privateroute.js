@@ -1,16 +1,9 @@
 import { Navigate, Route, useLocation } from "react-router-dom";
+import { isLogin } from "../../contexts/auth";
 
-const PrivateElement = ({ element, auth }) => {
-  let location = useLocation();
-  return auth ? element : <Navigate to="/login" state={{ from: location }} />;
-};
-
-const PrivateRoute = ({ element, auth, ...rest }) => {
+const PrivateRoute = ({ element, ...rest }) => {
   return (
-    <Route
-      {...rest}
-      element={<PrivateElement element={element} auth={auth} />}
-    />
+    <Route {...rest} element={isLogin() ? element : <Navigate to="/login" />} />
   );
 };
 
