@@ -14,36 +14,16 @@ import { standard } from "@styles/clazz";
 import { Vars } from "@styles/variables";
 import { logout } from "../contexts/auth";
 
-const SContainer = styled.div`
-  ${standard};
-  /* min-height: 731px; */
-  z-index: 0;
+const SApp = styled.div`
   width: 100%;
-  flex: inherit;
+  z-index: 0;
   pointer-events: auto;
 `;
 
 const SMain = styled.main`
-  ${standard};
-  flex-shrink: 1;
-  -webkit-box-flex: 1;
-  flex-grow: 1;
-  backface-visibility: hidden;
   ${Vars((env) => ({
     "background-color": env.darkColor,
   }))};
-  /* background-color: rgba(0, 0, 0, 0); */
-  /* -webkit-box-align: stretch; */
-  align-items: center;
-  -webkit-box-flex: 1;
-  flex-grow: 1;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  flex-direction: row;
-  width: 100%;
-  /* min-height: 100%; */
-  margin-left: auto;
-  margin-right: auto;
 `;
 
 const SBackgroundColor = styled.div`
@@ -87,23 +67,15 @@ const App = () => {
   const value = useMemo(() => ({ auth, setAuth }), [auth, setAuth]);
 
   return (
-    <>
+    <SApp aria-hidden="false" className="css-div-common r-flex-1 r-f-d-row">
       <AuthContext.Provider value={value}>
+        <TopHeader />
+        <SMain role="main" className="css-div-common r-f-g-1 r-f-s-1 r-flex-1">
+          <RoutesConfig />
+        </SMain>
         <BottomNav />
-        <SContainer aria-hidden="false">
-          <TopHeader />
-          <SMain role="main">
-            <SBackgroundColor>
-              {/* <SPadding> */}
-              <SSection aria-labelledby="accessible-list-5" role="region">
-                <RoutesConfig />
-              </SSection>
-              {/* </SPadding> */}
-            </SBackgroundColor>
-          </SMain>
-        </SContainer>
       </AuthContext.Provider>
-    </>
+    </SApp>
   );
 };
 

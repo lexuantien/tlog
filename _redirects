@@ -1,1 +1,9 @@
 /* /index.html 200
+
+<SBackgroundColor>
+            {/* <SPadding> */}
+            <SSection aria-labelledby="accessible-list-5" role="region">
+              <RoutesConfig />
+            </SSection>
+            {/* </SPadding> */}
+          </SBackgroundColor>

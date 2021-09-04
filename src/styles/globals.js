@@ -4,79 +4,24 @@ import { fonts } from "./fonts";
 import { Vars } from "@styles/variables";
 import { standard } from "@styles/clazz";
 
+
+
+// padding: constant(safe-area-inset-top) constant(safe-area-inset-right)
+// constant(safe-area-inset-bottom) constant(safe-area-inset-left);
+// padding: env(safe-area-inset-top) env(safe-area-inset-right)
+// env(safe-area-inset-bottom) env(safe-area-inset-left);
 export const globalsClazz = css`
   :global() {
     ${fonts}
-
-    *,
-    *:before,
-    *:after {
-      box-sizing: inherit;
-    }
-    html,
-    body {
-      height: 100%;
-      width: 100%;
-      overflow: auto;
-    }
-
-    /* Scrollbar Styles */
-    html {
-      box-sizing: border-box;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(0, 0, 0, 0.54);
-      touch-action: manipulation;
-      overflow-y: scroll;
-      overscroll-behavior-y: none;
-      font-size: 15px;
-      /* -webkit-text-size-adjust: 100%;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0); */
-    }
-
-    body::-webkit-scrollbar {
-      width: 12px;
-    }
-
-    body::-webkit-scrollbar-track {
-      background: rgb(242, 242, 242);
-    }
-
-    body::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.54);
-      border: 3px solid rgb(242, 242, 242);
-      border-radius: 10px;
-    }
-    /* End Scrollbar Styles */
 
     svg:not(:root) {
       overflow: hidden;
     }
 
     body {
-      margin: 0;
-      /* padding: 0; */
-      unicode-bidi: embed;
       ${Vars((env) => ({
         "background-color": env.themeColor,
       }))};
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-
-      padding: constant(safe-area-inset-top) constant(safe-area-inset-right)
-        constant(safe-area-inset-bottom) constant(safe-area-inset-left);
-      padding: env(safe-area-inset-top) env(safe-area-inset-right)
-        env(safe-area-inset-bottom) env(safe-area-inset-left);
-
-      #root {
-        ${standard}
-        flex: 1;
-        min-height: 600px;
-        height: 100vh;
-        width: 100%;
-        z-index: 0;
-        pointer-events: none !important;
-      }
     }
 
     form {

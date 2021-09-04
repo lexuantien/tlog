@@ -1,6 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+  lang="en"
+  dir="ltr"
+  style="overflow-y: scroll; overscroll-behavior-y: none; font-size: 15px"
+>
   <head>
+    <style>
+      input::placeholder {
+        user-select: none;
+        -webkit-user-select: none;
+      }
+    </style>
+
     <meta charset="UTF-8" />
     <meta
       name="viewport"
@@ -13,9 +24,225 @@
     <link rel="apple-touch-icon" sizes="192x192" href="logo192.png" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <meta name="theme-color" content="#15202B" />
+
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+    <style>
+      html {
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      }
+      body {
+        margin: 0;
+      }
+      button::-moz-focus-inner,
+      input::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+      }
+      input::-webkit-inner-spin-button,
+      input::-webkit-outer-spin-button,
+      input::-webkit-search-cancel-button,
+      input::-webkit-search-decoration,
+      input::-webkit-search-results-button,
+      input::-webkit-search-results-decoration {
+        display: none;
+      }
+
+      [stylesheet-group="1"] {
+      }
+      .css-div-common {
+        -ms-flex-align: stretch;
+        -ms-flex-direction: column;
+        -ms-flex-negative: 0;
+        -ms-flex-preferred-size: auto;
+        -webkit-align-items: stretch;
+        -webkit-box-align: stretch;
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+        -webkit-flex-basis: auto;
+        -webkit-flex-direction: column;
+        -webkit-flex-shrink: 0;
+        align-items: stretch;
+        border: 0 solid black;
+        box-sizing: border-box;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-basis: auto;
+        flex-direction: column;
+        flex-shrink: 0;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        min-height: 0px;
+        min-width: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        position: relative;
+        z-index: 0;
+      }
+      .css-text-common {
+        border: 0 solid black;
+        box-sizing: border-box;
+        color: rgba(0, 0, 0, 1);
+        display: inline;
+        font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .css-text-inherit {
+        color: inherit;
+        font: inherit;
+        white-space: inherit;
+      }
+      [stylesheet-group="2"] {
+      }
+      .r-flex-1 {
+        -ms-flex: 1 1 0%;
+        -webkit-flex: 1;
+        flex: 1;
+      }
+
+      .r-f-s-1 {
+        flex-shrink: 1;
+      }
+
+      .r-f-g-1 {
+        -webkit-box-flex: 1;
+        flex-grow: 1;
+      }
+
+      .r-i-block {
+        display: inline-block;
+      }
+      .r-m-auto {
+        margin-bottom: auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: auto;
+      }
+      .r-d-none {
+        display: none;
+      }
+      .r-d-block {
+        display: block;
+      }
+
+      .r-j-center {
+        -webkit-box-pack: center;
+        justify-content: center;
+      }
+
+      .r-a-center {
+        align-items: center;
+      }
+
+      .r-f-d-column {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+        flex-direction: column;
+      }
+
+      .r-f-d-row {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: horizontal;
+        flex-direction: row;
+      }
+
+      [stylesheet-group="2.2"] {
+      }
+      .r-p-e-auto > * {
+        pointer-events: auto;
+      }
+      .r-p-e-none {
+        pointer-events: none !important;
+      }
+      .r-b-0 {
+        bottom: 0px;
+      }
+      .r-l-0 {
+        left: 0px;
+      }
+      .r-p-fix {
+        position: fixed;
+      }
+      .r-r-0 {
+        right: 0px;
+      }
+      .r-t-0 {
+        top: 0px;
+      }
+      .r-f-currentcolor {
+        fill: currentcolor;
+      }
+      .r-h-1-25rem {
+        height: 1.25em;
+      }
+      .r-m-w-100percent {
+        max-width: 100%;
+      }
+      .r-p-relative {
+        position: relative;
+      }
+      .r-v-a-text-bottom {
+        vertical-align: text-bottom;
+      }
+      .r-u-s-none {
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+      .r-h-72 {
+        height: 72px;
+      }
+      .r-p-absolute {
+        position: absolute;
+      }
+      .r-w-72 {
+        width: 72px;
+      }
+      .r-t-60percent {
+        top: 60%;
+      }
+      .r-l-h-2em {
+        line-height: 2em;
+      }
+      .r-t-a-center {
+        text-align: center;
+      }
+
+      .r-p-e-auto-all > * {
+        pointer-events: auto;
+      }
+    </style>
     <title>Tlog</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div
+      id="root"
+      class="css-div-common r-flex-1 r-p-e-none"
+      style="height: 100%; display: flex"
+    ></div>
   </body>
 </html>

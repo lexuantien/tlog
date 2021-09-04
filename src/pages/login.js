@@ -1,68 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
 import { styled } from "@linaria/react";
 //
-import {
-  standardDiv,
-  standard,
-  userSelectNone,
-  aCenter,
-  jCenter,
-  flexgrow,
-  flexRow,
-} from "@styles/clazz";
 import Icon from "@comps/icons/icon";
 //
 import { login } from "../contexts/auth";
 import { Vars } from "@styles/variables";
-import { useContext } from "react";
-import Cookies from "js-cookie";
-import { cx, css } from "@linaria/core";
 
 const SLoginContainer = styled.div`
-  /*  */
-  padding: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  /*  */
+  min-height: auto;
+  min-width: 45vw;
   width: 100%;
-  /* height: 100vh; */
-  flex: 1;
-  /* min-height: 100vh; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-// color: rgb(255, 255, 255);
-const SLogo = styled.div`
-  ${standardDiv}
-  line-height: 49px;
-  letter-spacing: -0.8px;
-  font-size: 44px;
-  font-family: TlogChirpExtendedHeavy, Verdana, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-
-  ${Vars((env) => ({
-    color: env.textColor1,
-  }))};
-  font-weight: 700;
-  overflow-wrap: break-word;
-  min-width: 0px;
-
-  span {
-    ${standardDiv}
-    font-family: inherit;
-    overflow-wrap: break-word;
-    min-width: 0px;
-    color: inherit;
-    font: inherit;
-    white-space: inherit;
-  }
+  padding: 15px;
 `;
 
 const SLoginTitle = styled.div`
-  ${standardDiv}
   margin-bottom: 19px;
   line-height: 27px;
   font-size: 20px;
@@ -76,8 +27,7 @@ const SLoginTitle = styled.div`
   min-width: 0px;
 
   margin-top: 10px;
-  > span {
-    ${standardDiv}
+  span {
     font-family: inherit;
     overflow-wrap: break-word;
     min-width: 0px;
@@ -88,15 +38,11 @@ const SLoginTitle = styled.div`
 `;
 
 const SLoginButton = styled.div`
-  ${standard};
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 
 //  border-color: rgb(61, 84, 102);
 const SButton = styled.div`
-  ${standard};
   margin-bottom: 15px;
   outline-style: none;
   transition-property: background-color, box-shadow;
@@ -105,7 +51,6 @@ const SButton = styled.div`
   min-height: 34px;
   width: 300px;
   height: 38px;
-  ${userSelectNone}
   ${Vars((env) => ({
     "border-color": env.borderBottomHeaderColor,
   }))};
@@ -124,7 +69,6 @@ const SButton = styled.div`
   }
 
   div {
-    ${standard};
     color: rgb(15, 20, 25);
     font-weight: 700;
     font-size: 14px;
@@ -133,11 +77,6 @@ const SButton = styled.div`
     line-height: 19px;
     overflow-wrap: break-word;
     min-width: 0px;
-
-    ${aCenter};
-    ${jCenter};
-    ${flexgrow};
-    ${flexRow};
 
     display: flex;
     text-align: center;
@@ -156,7 +95,6 @@ const SButton = styled.div`
     }
 
     span {
-      ${standardDiv}
       font-family: inherit;
       font-size: 14px;
       line-height: 19px;
@@ -173,7 +111,6 @@ const SButton = styled.div`
 `;
 
 const STermText = styled.div`
-  ${standardDiv}
   margin-bottom: 15px;
   font-weight: 400;
   line-height: 15px;
@@ -187,7 +124,6 @@ const STermText = styled.div`
   min-width: 0px;
 
   a {
-    ${standardDiv}
     color: rgb(27, 149, 224);
     cursor: pointer;
     font-family: inherit;
@@ -197,7 +133,6 @@ const STermText = styled.div`
     white-space: inherit;
 
     span {
-      ${standardDiv}
       font-family: inherit;
       overflow-wrap: break-word;
       min-width: 0px;
@@ -208,6 +143,22 @@ const STermText = styled.div`
   }
 `;
 
+const SLogo = styled.div`
+  line-height: 49px;
+  letter-spacing: -0.8px;
+  font-size: 44px;
+  font-family: TlogChirpExtendedHeavy, Verdana, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  ${Vars((env) => ({
+    color: env.textColor1,
+  }))};
+
+  span:first-child {
+    text-decoration: underline;
+    color: rgb(29, 161, 242);
+  }
+`;
+
 const Login = () => {
   const navigate = useNavigate();
 
@@ -215,50 +166,53 @@ const Login = () => {
     login(navigate);
   };
 
+  const SocialButton = ({ name, text }) => {
+    return (
+      <SButton
+        className="css-div-common r-u-s-none"
+        role="button"
+        tabindex="0"
+        onClick={handleOnClick}
+      >
+        <div
+          className="css-div-common r-a-center r-j-center r-f-g-1 r-f-d-row"
+          dir="auto"
+        >
+          <Icon name={name} />
+          <span className="css-text-common">{`Sign in with ${text}`}</span>
+        </div>
+      </SButton>
+    );
+  };
+
   return (
     <>
-      <SLoginContainer>
-        <SLogo>
-          <span style={{textDecoration:"underline", color:"rgb(29, 161, 242)"}}>T</span>
+      <SLoginContainer className="css-div-common r-f-g-1 r-f-s-1 r-j-center r-a-center">
+        <SLogo className="css-text-common">
+          <span>T</span>
           <span>LOG</span>
         </SLogo>
-        <SLoginTitle>
-          <span>
-            For hooman named <span style={{textDecoration:"underline", color:"rgb(29, 161, 242)"}}>T</span>
-          </span>
+        <SLoginTitle className="css-text-common">
+          <span>Join website today.</span>
         </SLoginTitle>
-        <SLoginButton>
-          <SButton role="button" tabindex="0" onClick={handleOnClick}>
-            <div dir="auto">
-              <Icon name="google" />
-              <span>Sign up with Google</span>
-            </div>
-          </SButton>
-          <SButton role="button" tabindex="0">
-            <div dir="auto">
-              <Icon name="facebook" />
-              <span>Sign up with Facebook</span>
-            </div>
-          </SButton>
-          <SButton role="button" tabindex="0">
-            <div dir="auto">
-              <Icon name="github" />
-              <span>Sign up with Github</span>
-            </div>
-          </SButton>
+        <SLoginButton className="css-div-common r-a-center r-j-center">
+
+          <SocialButton name="google" text="Google" />
+          <SocialButton name="facebook" text="Facebook" />
+          <SocialButton name="github" text="Github" />
 
           <STermText>
-            By signing up, you agree to the{" "}
-            <Link to="/tos">
-              <span>Terms of Service</span>
+            By signing in, you agree to the{" "}
+            <Link className="css-text-common" to="/tos">
+              <span className="css-text-common">Terms of Service</span>
             </Link>{" "}
             and{" "}
-            <Link to="/privacy">
-              <span>Privacy Policy</span>
+            <Link className="css-text-common" to="/privacy">
+              <span className="css-text-common">Privacy Policy</span>
             </Link>
             {", "} including{" "}
-            <Link to="/tlog-cookies">
-              <span>Cookie Use.</span>
+            <Link className="css-text-common" to="/tlog-cookies">
+              <span className="css-text-common">Cookie Use.</span>
             </Link>
           </STermText>
         </SLoginButton>
