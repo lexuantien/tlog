@@ -21,9 +21,6 @@ const SContainer = styled.div`
   width: 100%;
   flex: inherit;
   pointer-events: auto;
-  ${Vars((env) => ({
-    "background-color": env.darkColor,
-  }))};
 `;
 
 const SMain = styled.main`
@@ -47,9 +44,6 @@ const SMain = styled.main`
   /* min-height: 100%; */
   margin-left: auto;
   margin-right: auto;
-  ${Vars((env) => ({
-    "background-color": env.darkColor,
-  }))};
 `;
 
 const SBackgroundColor = styled.div`
