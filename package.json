@@ -8,7 +8,8 @@
     "watch": "webpack --watch",
     "build": "cross-env NODE_ENV=production webpack",
     "build-dev": "webpack",
-    "clean": "rm -rf ./dist"
+    "clean": "rm -rf ./dist",
+    "serve": "yarn build && serve -s dist"
   },
   "keywords": [],
   "author": "",

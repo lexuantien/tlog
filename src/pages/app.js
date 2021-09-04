@@ -56,11 +56,11 @@ const SBackgroundColor = styled.div`
   border-color: rgba(0, 0, 0, 0);
   border-style: solid;
 `;
-
+/* padding-bottom: ${(props) => (props.$auth ? `calc(104px)` : `auto`)}; */
+/* padding-bottom: calc(104px); */
 const SPadding = styled.div`
   ${standard};
-  /* padding-bottom: ${(props) => (props.$auth ? `calc(104px)` : `auto`)}; */
-  /* padding-bottom: calc(104px); */
+
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -114,8 +114,15 @@ const Home = () => {
   };
   return (
     <>
-      <button onClick={handleOnClick}>Logout</button>
       <div>
+        <button onClick={handleOnClick}>Logout</button>
+      </div>
+      <div>
+        
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
         <p>home</p>
         <p>home</p>
         <p>home</p>
