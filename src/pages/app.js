@@ -59,7 +59,7 @@ const SBackgroundColor = styled.div`
 
 const SPadding = styled.div`
   ${standard};
-  padding-bottom: ${(props) => (props.$auth ? `calc(104px)` : `auto`)};
+  /* padding-bottom: ${(props) => (props.$auth ? `calc(104px)` : `auto`)}; */
   /* padding-bottom: calc(104px); */
   width: 100%;
   margin-left: auto;
@@ -93,7 +93,7 @@ const App = () => {
           <TopHeader />
           <SMain role="main">
             <SBackgroundColor>
-              <SPadding $auth={auth}>
+              <SPadding>
                 <SSection aria-labelledby="accessible-list-5" role="region">
                   <RoutesConfig />
                 </SSection>
@@ -115,6 +115,28 @@ const Home = () => {
   return (
     <>
       <button onClick={handleOnClick}>Logout</button>
+      <div>
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
+        <p>home</p>
+        <p>home3</p>
+        <p>home2</p>
+        <p>home1</p>
+      </div>
     </>
   );
 };
