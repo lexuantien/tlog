@@ -5,7 +5,7 @@ import { styled } from "@linaria/react";
 //
 import { Bottom as BottomNav } from "@comps/bottom";
 import { Header as TopHeader } from "@comps/header";
-import { PrivateRoute } from "../comps/core";
+import { PrivateRoute, LoginRoute } from "../comps/routes";
 //
 import Login from "./login";
 //
@@ -69,11 +69,22 @@ const SPadding = styled.div`
 const SSection = styled.section`
   ${standard};
   position: relative;
+  flex-direction: row;
   /* min-height: 100%; */
 `;
 
 const App = () => {
   const [auth, setAuth] = useState(false);
+  const readCookie = () => {
+    const user = Cookies.get("user");
+    if (user) {
+      setAuth(true);
+    }
+  };
+  useEffect(() => {
+    readCookie();
+  }, []);
+
   return (
     <>
       <AuthContext.Provider value={{ auth, setAuth }}>
@@ -95,17 +106,30 @@ const App = () => {
   );
 };
 
+const Home = () => {
+  const Auth = React.useContext(AuthContext);
+  const handleOnClick = () => {
+    Auth.setAuth(false);
+    Cookies.remove("user");
+  };
+  return (
+    <>
+      <button onClick={handleOnClick}>Logout</button>
+    </>
+  );
+};
+
 const RoutesConfig = () => {
   const Auth = React.useContext(AuthContext);
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <LoginRoute path="/login" auth={Auth.auth} element={<Login />} />
       <PrivateRoute
         path="/"
         auth={Auth.auth}
         element={<Navigate to="/home" />}
       />
-      <PrivateRoute path="/home" auth={Auth.auth} element={<p>home</p>} />
+      <PrivateRoute path="/home" auth={Auth.auth} element={<Home />} />
       <PrivateRoute path="/search" auth={Auth.auth} element={<p>search</p>} />
       <PrivateRoute
         path="/bookmarks"

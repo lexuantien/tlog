@@ -5,3 +5,7 @@ export { default as Search } from "./search";
 export { default as Tweet } from "./tweet";
 export { default as Home } from "./home";
 export { default as Back } from "./back";
+export { default as Apple } from "./apple";
+export { default as Google } from "./google";
+export { default as Facebook } from "./facebook";
+export { default as Github } from "./github";

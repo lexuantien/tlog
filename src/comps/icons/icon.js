@@ -7,6 +7,10 @@ import {
   Notification,
   Bookmark,
   Back,
+  Apple,
+  Google,
+  Facebook,
+  Github,
 } from "@comps/icons";
 
 const Icon = ({ name, active }) => {
@@ -25,6 +29,14 @@ const Icon = ({ name, active }) => {
       return <Setting />;
     case "back":
       return <Back />;
+    case "apple":
+      return <Apple />;
+    case "google":
+      return <Google />;
+    case "facebook":
+      return <Facebook />;
+    case "github":
+      return <Github />;
   }
 };
 
