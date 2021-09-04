@@ -7,7 +7,7 @@ import NavIcon from "./navicon";
 import { Vars } from "@styles/variables";
 import { standard, mLRAuto, flexRow } from "@styles/clazz";
 import { useWindowDimensions } from "@hooks";
-import { navRoutes } from "@configs";
+import { tickNavRoutes } from "@configs";
 
 const SNavGeneral = styled.div`
   ${standard};
@@ -39,7 +39,7 @@ const Nav = () => {
   const [selectedNavVal, setSelectedNavVal] = useState(-1);
 
   useEffect(() => {
-    const obj = navRoutes.find(
+    const obj = tickNavRoutes.find(
       (el) => el.path === (pathname === "/" ? "/home" : pathname)
     );
     if (obj != undefined) {
@@ -52,7 +52,7 @@ const Nav = () => {
   return (
     <SNavGeneral>
       <SNavContent role="navigation">
-        {navRoutes.map(({ iconName, path, value, alabel }, i) => (
+        {tickNavRoutes.map(({ iconName, path, value, alabel }, i) => (
           <NavIcon
             key={i}
             iconName={iconName}

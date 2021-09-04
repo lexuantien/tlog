@@ -5,6 +5,8 @@ import Left from "./left";
 import Center from "./center";
 import Right from "./right";
 import { useLocation } from "react-router-dom";
+import { AuthContext } from "@contexts";
+import { useContext } from "react";
 
 const SHeaderG = styled.header`
   ${standard};
@@ -35,7 +37,7 @@ const SHeaderM = styled.div`
   border-bottom-style: solid;
   ${Vars((env) => ({
     "background-color": env.darkColor,
-    "border-bottom-color": env.borderBottomColor,
+    "border-bottom-color": env.borderBottomHeaderColor,
   }))};
 
   position: fixed;
@@ -47,10 +49,12 @@ const SHeaderM = styled.div`
 const hiddenHeaderRoutes = ["/compose/log"];
 
 const Header = () => {
+  const Auth = useContext(AuthContext);
+  console.log(Auth.auth)
   const { pathname } = useLocation();
   return (
     <>
-      {pathname != "/compose/log" && (
+      {Auth.auth && pathname != "/compose/log" && (
         <SHeaderG role="banner">
           <SGap />
           <SHeaderM>

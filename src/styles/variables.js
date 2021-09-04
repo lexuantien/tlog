@@ -32,6 +32,7 @@ export const ThemesPkg = {
     circleButtonColorHover: "rgba(29,161,242,0.1)",
 
     borderColor: "rgb(207, 217, 222)",
+    borderBottomHeaderColor: "rgb(207, 217, 222)",
     borderTopColor: "rgb(239, 243, 244)",
     borderBottomColor: "transparent",
 
@@ -66,6 +67,7 @@ export const ThemesPkg = {
     circleButtonColorHover: "rgba(29,161,242,0.1)",
 
     borderColor: "rgb(56, 68, 77)",
+    borderBottomHeaderColor: "rgb(61, 84, 102)",
     borderTopColor: "rgb(56, 68, 77)",
     borderBottomColor: "rgb(61, 84, 102)",
 

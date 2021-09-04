@@ -1,6 +1,6 @@
-export const excludeRoutes = ["/compose/log"];
+export const excludeBottomNavRoutes = ["/compose/log"];
 
-export const navRoutes = [
+export const tickNavRoutes = [
   {
     iconName: "home",
     path: "/home",

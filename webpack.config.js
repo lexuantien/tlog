@@ -3,7 +3,7 @@ const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
+const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
 
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
@@ -26,13 +26,14 @@ const plugins = [
     // filename: "index.html",
   }),
   new PreloadWebpackPlugin({
-    rel: 'preload',
+    rel: "preload",
     as(entry) {
-      if (/\.css$/.test(entry)) return 'style';
-      if (/\.woff$/.test(entry)) return 'font';
-      if (/\.png$/.test(entry)) return 'image';
-      return 'script';
-    }
+      if (/\.css$/.test(entry)) return "style";
+      if (/\.woff$/.test(entry)) return "font";
+      if (/\.png$/.test(entry)) return "image";
+      return "script";
+    },
+    include: "all",
   }),
   new Dotenv({
     path: "./.env", // Path to .env file (this is the default)
@@ -181,6 +182,7 @@ module.exports = {
     alias: {
       //
       "@comps": path.resolve(__dirname, "src/comps"),
+      "@contexts": path.resolve(__dirname, "src/contexts"),
       "@pages": path.resolve(__dirname, "src/pages"),
       //
       "@styles": path.resolve(__dirname, "src/styles"),
