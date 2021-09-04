@@ -67,9 +67,11 @@ const SBackgroundColor = styled.div`
 const SPadding = styled.div`
   ${standard};
   width: 100%;
-  /* padding-bottom: calc(104px); */
+  padding-bottom: calc(104px);
   margin-left: auto;
   margin-right: auto;
+  padding-left: max(12px, env(safe-area-inset-left));
+  padding-right: max(12px, env(safe-area-inset-right));
 `;
 
 const SSection = styled.section`
@@ -92,11 +94,11 @@ const App = () => {
           <TopHeader />
           <SMain role="main">
             <SBackgroundColor>
-              {/* <SPadding> */}
-                <SSection aria-labelledby="accessible-list-5" role="region">
-                  <RoutesConfig />
-                </SSection>
-              {/* </SPadding> */}
+              <SPadding>
+              <SSection aria-labelledby="accessible-list-5" role="region">
+                <RoutesConfig />
+              </SSection>
+              </SPadding>
             </SBackgroundColor>
           </SMain>
         </SContainer>
