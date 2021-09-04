@@ -52,7 +52,9 @@ export const globalsClazz = css`
       margin: 0;
       /* padding: 0; */
       unicode-bidi: embed;
-
+      ${Vars((env) => ({
+        "background-color": env.themeColor,
+      }))};
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -65,16 +67,11 @@ export const globalsClazz = css`
       #root {
         ${standard}
         flex: 1;
-        min-height: 603px;
+        /* min-height: 603px; */
         height: 100vh;
         width: 100%;
         z-index: 0;
         pointer-events: none !important;
-
-        ${Vars((env) => ({
-          background: env.themeColor,
-          "background-color": env.themeColor,
-        }))};
       }
     }
 
