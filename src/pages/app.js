@@ -27,8 +27,10 @@ const SMain = styled.main`
   -webkit-box-flex: 1;
   flex-grow: 1;
   backface-visibility: hidden;
-
-  background-color: rgba(0, 0, 0, 0);
+  ${Vars((env) => ({
+    "background-color": env.darkColor,
+  }))};
+  /* background-color: rgba(0, 0, 0, 0); */
   -webkit-box-align: stretch;
   align-items: stretch;
   -webkit-box-flex: 1;
@@ -60,7 +62,6 @@ const SBackgroundColor = styled.div`
 /* padding-bottom: calc(104px); */
 const SPadding = styled.div`
   ${standard};
-
   width: 100%;
   margin-left: auto;
   margin-right: auto;
