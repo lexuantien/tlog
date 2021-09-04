@@ -13,6 +13,12 @@ export const globalsClazz = css`
     *:after {
       box-sizing: inherit;
     }
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+    }
 
     /* Scrollbar Styles */
     html {
@@ -20,13 +26,11 @@ export const globalsClazz = css`
       scrollbar-width: thin;
       scrollbar-color: rgba(0, 0, 0, 0.54);
       touch-action: manipulation;
-      width: 100%;
-      height: 100%;
       overflow-y: scroll;
       overscroll-behavior-y: none;
       font-size: 15px;
-      -webkit-text-size-adjust: 100%;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      /* -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0); */
     }
 
     body::-webkit-scrollbar {
@@ -67,7 +71,7 @@ export const globalsClazz = css`
       #root {
         ${standard}
         flex: 1;
-        /* min-height: 603px; */
+        min-height: 600px;
         height: 100vh;
         width: 100%;
         z-index: 0;
