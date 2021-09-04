@@ -32,6 +32,9 @@ const SLoginContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  ${Vars((env) => ({
+    "background-color": env.darkColor,
+  }))};
 `;
 
 // color: rgb(255, 255, 255);
