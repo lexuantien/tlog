@@ -21,13 +21,24 @@ const SApp = styled.div`
 `;
 
 const SMain = styled.main`
-  ${Vars((env) => ({
-    "background-color": env.darkColor,
-  }))};
+  backface-visibility: hidden;
+`;
+
+const SDisplay = styled.div`
+  -webkit-box-align: stretch;
+  align-items: stretch;
+
+  background-color: rgba(0, 0, 0, 0);
+
+  margin-left: auto;
+  margin-right: auto;
+
+  min-height: 100%;
+
+  width: 100%;
 `;
 
 const SBackgroundColor = styled.div`
-  ${standard};
   z-index: 1;
   border-right-width: 1px;
   border-left-width: 1px;
@@ -39,23 +50,17 @@ const SBackgroundColor = styled.div`
   margin-right: auto;
   border-color: rgba(0, 0, 0, 0);
   border-style: solid;
-
-  height: 100%;
 `;
 /* padding-bottom: ${(props) => (props.$auth ? `calc(104px)` : `auto`)}; */
 /* padding-bottom: calc(104px); */
 const SPadding = styled.div`
-  ${standard};
   width: 100%;
-  padding-bottom: calc(104px);
+  padding-bottom: calc(99px);
   margin-left: auto;
   margin-right: auto;
-  padding-left: max(12px, env(safe-area-inset-left));
-  padding-right: max(12px, env(safe-area-inset-right));
 `;
 
 const SSection = styled.section`
-  ${standard};
   position: relative;
   flex-direction: row;
   flex: 1;
@@ -67,7 +72,7 @@ const App = () => {
   const value = useMemo(() => ({ auth, setAuth }), [auth, setAuth]);
 
   return (
-    <SApp aria-hidden="false" className="css-div-common r-flex-1 r-f-d-row">
+    <SApp aria-hidden="false" className="css-div-common r-flex-1">
       <AuthContext.Provider value={value}>
         <TopHeader />
         <SMain role="main" className="css-div-common r-f-g-1 r-f-s-1 r-flex-1">
@@ -95,16 +100,41 @@ const Home = () => {
 
 const RoutesConfig = () => {
   return (
-    <Routes>
-      <PublicRoute path="/login" restricted={true} element={<Login />} />
-      <PrivateRoute path="/" element={<Navigate to="/home" />} />
-      <PrivateRoute path="/home" element={<Home />} />
-      <PrivateRoute path="/search" element={<p>search</p>} />
-      <PrivateRoute path="/bookmarks" element={<p>bookmarks</p>} />
-      <PrivateRoute path="/notifications" element={<p>notifications</p>} />
-      <PrivateRoute path="/compose/log" element={<p>compose/log</p>} />
-      <PrivateRoute path="/settings" element={<p>settings</p>} />
-    </Routes>
+    <>
+      <Routes>
+        <PublicRoute path="/login" restricted={true} element={<Login />} />
+      </Routes>
+      <SDisplay
+        style={{ display: "contents" }}
+        className="css-div-common r-f-d-row r-f-g-1"
+      >
+        <SBackgroundColor className="css-div-common">
+          <SPadding className="css-div-common">
+            <SSection
+              className="css-div-common"
+              aria-labelledby="accessible-list-1"
+              role="region"
+            >
+              <Routes>
+                <PrivateRoute path="/" element={<Navigate to="/home" />} />
+                <PrivateRoute path="/home" element={<Home />} />
+                <PrivateRoute path="/search" element={<p>search</p>} />
+                <PrivateRoute path="/bookmarks" element={<p>bookmarks</p>} />
+                <PrivateRoute
+                  path="/notifications"
+                  element={<p>notifications</p>}
+                />
+                <PrivateRoute
+                  path="/compose/log"
+                  element={<p>compose/log</p>}
+                />
+                <PrivateRoute path="/settings" element={<p>settings</p>} />
+              </Routes>
+            </SSection>
+          </SPadding>
+        </SBackgroundColor>
+      </SDisplay>
+    </>
   );
 };
 

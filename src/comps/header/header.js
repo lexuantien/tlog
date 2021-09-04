@@ -10,8 +10,6 @@ import { useContext } from "react";
 import { isLogin } from "../../contexts/auth";
 
 const SHeaderG = styled.header`
-  ${standard};
-  ${userSelectNone};
   z-index: 3;
 `;
 
@@ -54,7 +52,7 @@ const Header = () => {
   return (
     <>
       {isLogin() && pathname != "/compose/log" && (
-        <SHeaderG role="banner">
+        <SHeaderG className="css-div-common r-u-s-none" role="banner">
           <SGap />
           <SHeaderM>
             <Left />
