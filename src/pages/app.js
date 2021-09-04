@@ -70,7 +70,7 @@ const SSection = styled.section`
   ${standard};
   position: relative;
   flex-direction: row;
-  /* min-height: 100%; */
+  min-height: 100%;
 `;
 
 const App = () => {
