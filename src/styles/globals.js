@@ -73,6 +73,7 @@ export const globalsClazz = css`
 
         ${Vars((env) => ({
           background: env.themeColor,
+          "background-color": env.themeColor,
         }))};
       }
     }
