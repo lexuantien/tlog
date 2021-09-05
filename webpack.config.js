@@ -58,10 +58,10 @@ const plugins = [
         to: "",
       },
       // ios splash screen:
-      {
-        from: "./src/images/pwa/splashscreens",
-        to: "splashscreens",
-      },
+      // {
+      //   from: "./src/images/pwa/splashscreens",
+      //   to: "splashscreens",
+      // },
     ],
   }),
 ];
