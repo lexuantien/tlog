@@ -7,9 +7,14 @@ import { Header as TopHeader } from "@comps/header";
 import { PrivateRoute, PublicRoute } from "../comps/routes";
 //
 import Login from "./login";
+import Log from "./log";
 //
 import { Vars } from "@styles/variables";
 import { AuthProvider, useAuth } from "../contexts/authen";
+import Home from "./home";
+import Search from "./search";
+import Bookmark from "./bookmark";
+import Setting from "./setting";
 
 const SApp = styled.div`
   width: 100%;
@@ -78,66 +83,36 @@ const App = () => {
   );
 };
 
-const Home = () => {
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
-  const { currentUser, logout } = useAuth();
-
-  const handleOnClick = async () => {
-    setError("");
-    try {
-      await logout();
-      navigate("/login");
-    } catch {
-      setError("Failed to log out");
-    }
-  };
-  return (
-    <>
-      <div>
-        <h1>
-          <strong>Email:</strong> {currentUser.email}
-        </h1>
-        <button onClick={handleOnClick}>Logout</button>
-      </div>
-    </>
-  );
-};
-
 const RoutesConfig = () => {
+  const { currentUser } = useAuth();
+
   return (
     <>
       <Routes>
         <PublicRoute path="/login" restricted={true} element={<Login />} />
       </Routes>
       <SDisplay
-        style={{ display: "contents" }}
+        style={{ display: currentUser ? "flex" : "contents" }}
         className="css-div-common r-f-d-row r-f-g-1"
       >
         <SBackgroundColor className="css-div-common">
-          <SPadding className="css-div-common">
-            <SSection
-              className="css-div-common"
-              aria-labelledby="accessible-list-1"
-              role="region"
-            >
-              <Routes>
-                <PrivateRoute path="/" element={<Navigate to="/home" />} />
-                <PrivateRoute path="/home" element={<Home />} />
-                <PrivateRoute path="/search" element={<p>search</p>} />
-                <PrivateRoute path="/bookmarks" element={<p>bookmarks</p>} />
-                <PrivateRoute
-                  path="/notifications"
-                  element={<p>notifications</p>}
-                />
-                <PrivateRoute
-                  path="/compose/log"
-                  element={<p>compose/log</p>}
-                />
-                <PrivateRoute path="/settings" element={<p>settings</p>} />
-              </Routes>
-            </SSection>
-          </SPadding>
+          {/* <SPadding className="css-div-common"> */}
+          <SSection
+            className="css-div-common"
+            aria-labelledby="accessible-list-1"
+            role="region"
+          >
+            <Routes>
+              <PrivateRoute path="/" element={<Navigate to="/home" />} />
+              <PrivateRoute path="/home" element={<Home />} />
+              <PrivateRoute path="/search" element={<Search />} />
+              <PrivateRoute path="/bookmarks" element={<Bookmark />} />
+              <PrivateRoute path="/notifications" element={<Notification />} />
+              <PrivateRoute path="/compose/log" element={<Log />} />
+              <PrivateRoute path="/settings" element={<Setting />} />
+            </Routes>
+          </SSection>
+          {/* </SPadding> */}
         </SBackgroundColor>
       </SDisplay>
     </>

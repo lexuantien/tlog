@@ -20,6 +20,7 @@ export const ThemesPkg = {
   light: {
     //
     blue: "rgb(29,161,242)",
+    blurBlue: "rgb(29, 155, 240)",
     iconLogo: "rgba(29,161,242,1.00)",
     iconColor: "rgb(15, 20, 25)", // normal
     iconColorClicked: "rgb(15, 20, 25)", // clicked
@@ -57,6 +58,7 @@ export const ThemesPkg = {
   },
   dark: {
     blue: "rgb(29,161,242)",
+    blurBlue: "rgb(29, 155, 240)",
     iconLogo: "rgb(255, 255, 255)",
     iconColor: "rgb(255, 255, 255)", // normal
     iconColorClicked: "rgb(255, 255, 255)", // clicked

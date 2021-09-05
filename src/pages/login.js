@@ -197,11 +197,11 @@ const Login = () => {
   return (
     <>
       <SLoginContainer className="css-div-common r-f-g-1 r-f-s-1 r-j-center r-a-center">
-        <SLogo className="css-text-common">
+        <SLogo className="css-text-common r-u-s-none ">
           <span>T</span>
           <span>LOG</span>
         </SLogo>
-        <SLoginTitle className="css-text-common">
+        <SLoginTitle className="css-text-common r-u-s-none ">
           {!existedUser ? (
             <span>Join website today.</span>
           ) : (
