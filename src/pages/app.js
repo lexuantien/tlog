@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate, Routes, Route, useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 import { styled } from "@linaria/react";
 //
 import { Bottom as BottomNav } from "@comps/bottom";
@@ -9,10 +8,8 @@ import { PrivateRoute, PublicRoute } from "../comps/routes";
 //
 import Login from "./login";
 //
-import { AuthContext } from "@contexts";
-import { standard } from "@styles/clazz";
 import { Vars } from "@styles/variables";
-import { logout } from "../contexts/auth";
+import { AuthProvider, useAuth } from "../contexts/authen";
 
 const SApp = styled.div`
   width: 100%;
@@ -68,30 +65,39 @@ const SSection = styled.section`
 `;
 
 const App = () => {
-  const [auth, setAuth] = useState(null);
-  const value = useMemo(() => ({ auth, setAuth }), [auth, setAuth]);
-
   return (
     <SApp aria-hidden="false" className="css-div-common r-flex-1">
-      <AuthContext.Provider value={value}>
+      <AuthProvider>
         <TopHeader />
         <SMain role="main" className="css-div-common r-f-g-1 r-f-s-1 r-flex-1">
           <RoutesConfig />
         </SMain>
         <BottomNav />
-      </AuthContext.Provider>
+      </AuthProvider>
     </SApp>
   );
 };
 
 const Home = () => {
+  const [error, setError] = useState("");
   const navigate = useNavigate();
-  const handleOnClick = () => {
-    logout(navigate);
+  const { currentUser, logout } = useAuth();
+
+  const handleOnClick = async () => {
+    setError("");
+    try {
+      await logout();
+      navigate("/login");
+    } catch {
+      setError("Failed to log out");
+    }
   };
   return (
     <>
       <div>
+        <h1>
+          <strong>Email:</strong> {currentUser.email}
+        </h1>
         <button onClick={handleOnClick}>Logout</button>
       </div>
     </>

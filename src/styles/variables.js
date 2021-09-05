@@ -39,6 +39,8 @@ export const ThemesPkg = {
     searchBackground: "rgb(239, 243, 244)",
 
     themeColor: "rgb(255, 255, 255)",
+    themeColorInverse:"rgb(21, 32, 43)",
+
     darkColor: "rgba(255,255,255,1.00)",
 
     blockColor: "rgb(247, 249, 249)",
@@ -74,6 +76,7 @@ export const ThemesPkg = {
     searchBackground: "rgb(37, 51, 65)",
 
     themeColor: "rgb(21, 32, 43)",
+    themeColorInverse:"rgb(255, 255, 255)",
 
     darkColor: "rgba(21,32,43,1.00)",
 

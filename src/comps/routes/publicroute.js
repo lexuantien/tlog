@@ -1,10 +1,12 @@
-import { Navigate, Route, useLocation } from "react-router-dom";
-import { isLogin } from "../../contexts/auth";
+import { Navigate, Route } from "react-router-dom";
+import { useAuth } from "../../contexts/authen";
+
 const PublicRoute = ({ element, restricted, ...rest }) => {
+  const { currentUser } = useAuth();
   return (
     <Route
       {...rest}
-      element={isLogin() && restricted ? <Navigate to="/home" /> : element}
+      element={currentUser && restricted ? <Navigate to="/home" /> : element}
     />
   );
 };

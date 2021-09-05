@@ -3,8 +3,9 @@ import { styled } from "@linaria/react";
 //
 import Icon from "@comps/icons/icon";
 //
-import { login, OauthLogin } from "../contexts/auth";
 import { Vars } from "@styles/variables";
+import { useAuth } from "../contexts/authen";
+import { useState } from "react";
 
 const SLoginContainer = styled.div`
   min-height: auto;
@@ -160,10 +161,18 @@ const SLogo = styled.div`
 `;
 
 const Login = () => {
+  const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { login, existedUser } = useAuth();
 
-  const handleOnClick = (providerId) => {
-    OauthLogin(providerId, navigate);
+  const handleOnClick = async (providerId) => {
+    try {
+      setError("");
+      await login(providerId);
+      navigate("/home");
+    } catch {
+      setError("Failed to log in");
+    }
   };
 
   const SocialButton = ({ name, text, providerId }) => {
@@ -193,7 +202,11 @@ const Login = () => {
           <span>LOG</span>
         </SLogo>
         <SLoginTitle className="css-text-common">
-          <span>Join website today.</span>
+          {!existedUser ? (
+            <span>Join website today.</span>
+          ) : (
+            <span style={{ color: "red" }}>Email already used</span>
+          )}
         </SLoginTitle>
         <SLoginButton className="css-div-common r-a-center r-j-center">
           <SocialButton providerId="google.com" name="google" text="Google" />

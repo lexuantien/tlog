@@ -7,8 +7,7 @@ import { AuthContext } from "@contexts";
 //
 import { standard } from "@styles/clazz";
 import { excludeBottomNavRoutes } from "@configs";
-import { useContext } from "react";
-import { isLogin } from "../../contexts/auth";
+import { useAuth } from "../../contexts/authen";
 
 const SBottom = styled.div`
   ${standard};
@@ -23,9 +22,10 @@ const SBottom = styled.div`
 
 const Bottom = () => {
   const { pathname } = useLocation();
+  const { currentUser } = useAuth();
   return (
     <SBottom>
-      {isLogin() && excludeBottomNavRoutes.find((r) => r !== pathname) && (
+      {currentUser && excludeBottomNavRoutes.find((r) => r !== pathname) && (
         <>
           <Tweet />
           <Nav />

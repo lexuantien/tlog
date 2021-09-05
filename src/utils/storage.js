@@ -11,10 +11,10 @@ export const CheckLS = (key) => {
 };
 
 const ThemeLSVal = () => {
-  if (!CheckLS("tbog-theme")) {
-    SetLS("tbog-theme", "dark");
+  if (!CheckLS("tlog-theme")) {
+    SetLS("tlog-theme", "dark");
   }
-  return GetLS("tbog-theme");
+  return GetLS("tlog-theme");
 };
 
 export default ThemeLSVal;

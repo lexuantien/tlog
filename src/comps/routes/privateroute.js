@@ -1,9 +1,13 @@
-import { Navigate, Route, useLocation } from "react-router-dom";
-import { isLogin } from "../../contexts/auth";
+import { Navigate, Route } from "react-router-dom";
+import { useAuth } from "../../contexts/authen";
 
 const PrivateRoute = ({ element, ...rest }) => {
+  const { currentUser } = useAuth();
   return (
-    <Route {...rest} element={isLogin() ? element : <Navigate to="/login" />} />
+    <Route
+      {...rest}
+      element={currentUser ? element : <Navigate to="/login" />}
+    />
   );
 };
 
