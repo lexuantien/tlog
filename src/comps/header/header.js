@@ -1,12 +1,10 @@
 import { styled } from "@linaria/react";
-import { standard, userSelectNone, mLRAuto, flexRow } from "@styles/clazz";
+
 import { Vars } from "@styles/variables";
 import Left from "./left";
 import Center from "./center";
 import Right from "./right";
 import { useLocation } from "react-router-dom";
-import { AuthContext } from "@contexts";
-import { useContext } from "react";
 import { isLogin } from "../../contexts/auth";
 
 const SHeaderG = styled.header`
@@ -14,13 +12,13 @@ const SHeaderG = styled.header`
 `;
 
 const SGap = styled.div`
-  ${standard};
   height: 53.5px;
 `;
 
 const SHeaderM = styled.div`
-  ${standard};
-  ${mLRAuto}
+  margin-left: auto;
+  margin-right: auto;
+
   z-index: 2;
 
   transition-property: -webkit-transform, transform;
@@ -42,7 +40,6 @@ const SHeaderM = styled.div`
   position: fixed;
   padding-left: 16px;
   padding-right: 16px;
-  ${flexRow};
 `;
 
 const hiddenHeaderRoutes = ["/compose/log"];
@@ -53,8 +50,8 @@ const Header = () => {
     <>
       {isLogin() && pathname != "/compose/log" && (
         <SHeaderG className="css-div-common r-u-s-none" role="banner">
-          <SGap />
-          <SHeaderM>
+          <SGap className="css-div-common" />
+          <SHeaderM className="css-div-common r-f-d-row">
             <Left />
             <Center />
             <Right />

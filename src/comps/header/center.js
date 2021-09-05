@@ -19,15 +19,10 @@ import { Vars } from "@styles/variables";
 import { titleRoutes } from "@configs";
 
 const SCenterG = styled.div`
-  ${standard}
-  ${jCenter}
-  ${flexshirk}
   height: 100%;
-  ${flexgrow}
   ${flexstart}
 
   h2 {
-    ${basicInherit}
     font-size: 17px;
     font-weight: 700;
     ${Vars((env) => ({
@@ -39,7 +34,6 @@ const SCenterG = styled.div`
     ${nowrap}
 
     span {
-      ${basicInherit}
       font-family: inherit;
       overflow-wrap: break-word;
       min-width: 0px;
@@ -50,7 +44,6 @@ const SCenterG = styled.div`
   }
 
   div {
-    ${basicInherit}
     font-weight: 400;
     line-height: 15px;
     font-size: 12px;
@@ -62,7 +55,6 @@ const SCenterG = styled.div`
       color: env.textColor2,
     }))};
     span {
-      ${basicInherit}
       font-family: inherit;
       overflow-wrap: break-word;
       min-width: 0px;
@@ -201,13 +193,18 @@ const Center = () => {
   return (
     <>
       {title != null ? (
-        <SCenterG>
-          <h2 dir="auto" aria-level="2" role="heading">
-            <span>{title[0]}</span>
+        <SCenterG className="css-div-common r-j-center r-f-s-1 r-f-g-1">
+          <h2
+            className="css-text-basic "
+            dir="auto"
+            aria-level="2"
+            role="heading"
+          >
+            <span className="css-text-basic ">{title[0]}</span>
           </h2>
           {title[1] != undefined && (
-            <div>
-              <span>@LeXuanTien1997</span>
+            <div className="css-text-basic ">
+              <span className="css-text-basic ">@LeXuanTien1997</span>
             </div>
           )}
         </SCenterG>

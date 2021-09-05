@@ -162,17 +162,17 @@ const SLogo = styled.div`
 const Login = () => {
   const navigate = useNavigate();
 
-  const handleOnClick = () => {
-    login(navigate);
+  const handleOnClick = (type) => {
+    login(type, navigate);
   };
 
-  const SocialButton = ({ name, text }) => {
+  const SocialButton = ({ name, text, type }) => {
     return (
       <SButton
         className="css-div-common r-u-s-none"
         role="button"
         tabindex="0"
-        onClick={handleOnClick}
+        onClick={() => handleOnClick(type)}
       >
         <div
           className="css-div-common r-a-center r-j-center r-f-g-1 r-f-d-row"
@@ -196,10 +196,9 @@ const Login = () => {
           <span>Join website today.</span>
         </SLoginTitle>
         <SLoginButton className="css-div-common r-a-center r-j-center">
-
-          <SocialButton name="google" text="Google" />
-          <SocialButton name="facebook" text="Facebook" />
-          <SocialButton name="github" text="Github" />
+          <SocialButton type={1} name="google" text="Google" />
+          <SocialButton type={1} name="facebook" text="Facebook" />
+          <SocialButton type={1} name="github" text="Github" />
 
           <STermText>
             By signing in, you agree to the{" "}
