@@ -3,6 +3,8 @@ const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+
 const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
 
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
@@ -56,6 +58,11 @@ const plugins = [
       {
         from: "./src/manifest.json",
         to: "",
+      },
+      // fonts
+      {
+        from: "./src/fonts",
+        to: "fonts",
       },
       // ios splash screen:
       {
@@ -122,7 +129,8 @@ module.exports = {
         ],
       },
       {
-        test: /\.(woff(2)?|ttf|otf|eot|png|jpe?g|gif|svg)$/i,
+        // woff(2)?|ttf|otf|eot|
+        test: /\.(png|jpe?g|gif|svg)$/i,
         /**
          * The `type` setting replaces the need for "url-loader"
          * and "file-loader" in Webpack 5.
@@ -196,11 +204,17 @@ module.exports = {
     },
   },
   optimization: {
+    minimizer: [
+      // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+      // `...`,
+      new CssMinimizerPlugin(),
+    ],
     splitChunks: {
       chunks: "all",
       //
     },
     runtimeChunk: "single",
+    // minimize: true,
   },
   performance: {
     hints: false,

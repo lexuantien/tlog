@@ -1,18 +1,16 @@
 import { css } from "@linaria/core";
 
-import { fonts } from "./fonts";
+// import { fonts } from "./fonts";
 import { Vars } from "@styles/variables";
-import { standard } from "@styles/clazz";
-
-
 
 // padding: constant(safe-area-inset-top) constant(safe-area-inset-right)
 // constant(safe-area-inset-bottom) constant(safe-area-inset-left);
 // padding: env(safe-area-inset-top) env(safe-area-inset-right)
 // env(safe-area-inset-bottom) env(safe-area-inset-left);
+
+// ${fonts}
 export const globalsClazz = css`
   :global() {
-    ${fonts}
 
     svg:not(:root) {
       overflow: hidden;

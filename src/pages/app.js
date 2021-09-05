@@ -15,6 +15,7 @@ import Home from "./home";
 import Search from "./search";
 import Bookmark from "./bookmark";
 import Setting from "./setting";
+import Notification from "./notification";
 
 const SApp = styled.div`
   width: 100%;

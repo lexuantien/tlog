@@ -12,6 +12,44 @@
       }
     </style>
 
+    <style>
+      @font-face {
+        font-family: "TLogChirpExtendedHeavy";
+        src: url("fonts/chirp-extended-heavy.woff") format("woff");
+        font-weight: 800;
+        font-style: "normal";
+        font-display: "swap";
+      }
+      @font-face {
+        font-family: "TLogChirp";
+        src: url("fonts/chirp-regular.woff") format("woff");
+        font-weight: 400;
+        font-style: "normal";
+        font-display: "swap";
+      }
+      @font-face {
+        font-family: "TLogChirp";
+        src: url("fonts/chirp-medium.woff") format("woff");
+        font-weight: 500;
+        font-style: "normal";
+        font-display: "swap";
+      }
+      @font-face {
+        font-family: "TLogChirp";
+        src: url("fonts/chirp-bold.woff") format("woff");
+        font-weight: 700;
+        font-style: "normal";
+        font-display: "swap";
+      }
+      @font-face {
+        font-family: "TLogChirp";
+        src: url("fonts/chirp-heavy.woff") format("woff");
+        font-weight: 800;
+        font-style: "normal";
+        font-display: "swap";
+      }
+    </style>
+
     <meta charset="UTF-8" />
     <meta
       name="viewport"
@@ -78,8 +116,8 @@
     />
 
     <style>
-      html,
-      body {
+      body,
+      html {
         height: 100%;
       }
     </style>
@@ -87,7 +125,7 @@
       html {
         -ms-text-size-adjust: 100%;
         -webkit-text-size-adjust: 100%;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-tap-highlight-color: transparent;
       }
       body {
         margin: 0;
@@ -105,9 +143,6 @@
       input::-webkit-search-results-decoration {
         display: none;
       }
-
-      [stylesheet-group="1"] {
-      }
       .css-div-common {
         -ms-flex-align: stretch;
         -ms-flex-direction: column;
@@ -121,7 +156,7 @@
         -webkit-flex-direction: column;
         -webkit-flex-shrink: 0;
         align-items: stretch;
-        border: 0 solid black;
+        border: 0 solid #000;
         box-sizing: border-box;
         display: -webkit-box;
         display: -moz-box;
@@ -131,34 +166,34 @@
         flex-basis: auto;
         flex-direction: column;
         flex-shrink: 0;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        min-height: 0px;
-        min-width: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        min-height: 0;
+        min-width: 0;
+        padding-bottom: 0;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0;
         position: relative;
         z-index: 0;
       }
       .css-text-common {
-        border: 0 solid black;
+        border: 0 solid #000;
         box-sizing: border-box;
-        color: rgba(0, 0, 0, 1);
+        color: #000;
         display: inline;
         font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           Helvetica, Arial, sans-serif;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        padding-bottom: 0;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0;
         white-space: pre-wrap;
         word-wrap: break-word;
       }
@@ -167,34 +202,27 @@
         font: inherit;
         white-space: inherit;
       }
-
       .css-text-basic {
         background-color: rgba(0, 0, 0, 0);
         color: inherit;
         font: inherit;
         list-style: none;
-        margin: 0px;
+        margin: 0;
         text-align: inherit;
         text-decoration: none;
-      }
-
-      [stylesheet-group="2"] {
       }
       .r-flex-1 {
         -ms-flex: 1 1 0%;
         -webkit-flex: 1;
         flex: 1;
       }
-
       .r-f-s-1 {
         flex-shrink: 1;
       }
-
       .r-f-g-1 {
         -webkit-box-flex: 1;
         flex-grow: 1;
       }
-
       .r-i-block {
         display: inline-block;
       }
@@ -204,41 +232,32 @@
         margin-right: auto;
         margin-top: auto;
       }
-
       .r-m-lr-auto {
         margin-left: auto;
         margin-right: auto;
       }
-
       .r-d-none {
         display: none;
       }
       .r-d-block {
         display: block;
       }
-
       .r-j-center {
         -webkit-box-pack: center;
         justify-content: center;
       }
-
       .r-a-center {
         align-items: center;
       }
-
       .r-f-d-column {
         -webkit-box-direction: normal;
         -webkit-box-orient: vertical;
         flex-direction: column;
       }
-
       .r-f-d-row {
         -webkit-box-direction: normal;
         -webkit-box-orient: horizontal;
         flex-direction: row;
-      }
-
-      [stylesheet-group="2.2"] {
       }
       .r-p-e-auto > * {
         pointer-events: auto;
@@ -247,19 +266,19 @@
         pointer-events: none !important;
       }
       .r-b-0 {
-        bottom: 0px;
+        bottom: 0;
       }
       .r-l-0 {
-        left: 0px;
+        left: 0;
       }
       .r-p-fix {
         position: fixed;
       }
       .r-r-0 {
-        right: 0px;
+        right: 0;
       }
       .r-t-0 {
-        top: 0px;
+        top: 0;
       }
       .r-f-currentcolor {
         fill: currentcolor;
@@ -300,7 +319,6 @@
       .r-t-a-center {
         text-align: center;
       }
-
       .r-p-e-auto-all > * {
         pointer-events: auto;
       }
