@@ -44,7 +44,7 @@ export const globalsClazz = css`
     label,
     select,
     textarea {
-      font-family: "TlogChirp", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      font-family: "TLogChirp", -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Helvetica, Arial, sans-serif;
       font-size: 12px;
     }

@@ -3,7 +3,7 @@ import { styled } from "@linaria/react";
 //
 import Icon from "@comps/icons/icon";
 //
-import { login } from "../contexts/auth";
+import { login, OauthLogin } from "../contexts/auth";
 import { Vars } from "@styles/variables";
 
 const SLoginContainer = styled.div`
@@ -17,7 +17,7 @@ const SLoginTitle = styled.div`
   margin-bottom: 19px;
   line-height: 27px;
   font-size: 20px;
-  font-family: TlogChirpExtendedHeavy, Verdana, -apple-system,
+  font-family: TLogChirpExtendedHeavy, Verdana, -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   ${Vars((env) => ({
     color: env.textColor1,
@@ -72,7 +72,7 @@ const SButton = styled.div`
     color: rgb(15, 20, 25);
     font-weight: 700;
     font-size: 14px;
-    font-family: TlogChirp, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    font-family: TLogChirp, -apple-system, BlinkMacSystemFont, "Segoe UI",
       Roboto, Helvetica, Arial, sans-serif;
     line-height: 19px;
     overflow-wrap: break-word;
@@ -118,7 +118,7 @@ const STermText = styled.div`
   ${Vars((env) => ({
     color: env.textColor2,
   }))};
-  font-family: TlogChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  font-family: TLogChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif;
   overflow-wrap: break-word;
   min-width: 0px;
@@ -147,7 +147,7 @@ const SLogo = styled.div`
   line-height: 49px;
   letter-spacing: -0.8px;
   font-size: 44px;
-  font-family: TlogChirpExtendedHeavy, Verdana, -apple-system,
+  font-family: TLogChirpExtendedHeavy, Verdana, -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   ${Vars((env) => ({
     color: env.textColor1,
@@ -162,17 +162,17 @@ const SLogo = styled.div`
 const Login = () => {
   const navigate = useNavigate();
 
-  const handleOnClick = (type) => {
-    login(type, navigate);
+  const handleOnClick = (providerId) => {
+    OauthLogin(providerId, navigate);
   };
 
-  const SocialButton = ({ name, text, type }) => {
+  const SocialButton = ({ name, text, providerId }) => {
     return (
       <SButton
         className="css-div-common r-u-s-none"
         role="button"
         tabindex="0"
-        onClick={() => handleOnClick(type)}
+        onClick={() => handleOnClick(providerId)}
       >
         <div
           className="css-div-common r-a-center r-j-center r-f-g-1 r-f-d-row"
@@ -196,9 +196,13 @@ const Login = () => {
           <span>Join website today.</span>
         </SLoginTitle>
         <SLoginButton className="css-div-common r-a-center r-j-center">
-          <SocialButton type={1} name="google" text="Google" />
-          <SocialButton type={1} name="facebook" text="Facebook" />
-          <SocialButton type={1} name="github" text="Github" />
+          <SocialButton providerId="google.com" name="google" text="Google" />
+          <SocialButton
+            providerId="facebook.com"
+            name="facebook"
+            text="Facebook"
+          />
+          <SocialButton providerId="github.com" name="github" text="Github" />
 
           <STermText>
             By signing in, you agree to the{" "}
@@ -210,7 +214,7 @@ const Login = () => {
               <span className="css-text-common">Privacy Policy</span>
             </Link>
             {", "} including{" "}
-            <Link className="css-text-common" to="/tlog-cookies">
+            <Link className="css-text-common" to="/tbog-cookies">
               <span className="css-text-common">Cookie Use.</span>
             </Link>
           </STermText>

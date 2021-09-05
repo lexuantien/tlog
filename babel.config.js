@@ -1,10 +1,10 @@
 // Cannot load "react-refresh/babel" in production
 const plugins = [
   // [
-    // "babel-plugin-styled-components",
-    // {
-    //   displayName: false,
-    // },
+  // "babel-plugin-styled-components",
+  // {
+  //   displayName: false,
+  // },
   // ],
 ];
 
@@ -17,10 +17,14 @@ module.exports = {
     "@babel/preset-env",
     // Runtime automatic with React 17+ allows not importing React
     // in files only using JSX (no state or React methods)
-    ["@babel/preset-react", {
-      runtime: "automatic"
-    }],
-    "@linaria"
+    [
+      "@babel/preset-react",
+      {
+        runtime: "automatic",
+      },
+    ],
+    "@linaria",
   ],
+  plugins: [["@babel/plugin-transform-runtime"]],
   // plugins: plugins,
 };

@@ -1,6 +1,6 @@
 {
   "short_name": "TLog",
-  "name": "Tlog",
+  "name": "TLog",
   "description": "Blog for everyone named T",
   "display": "standalone",
   "categories": ["blog", "news", "magazines"],

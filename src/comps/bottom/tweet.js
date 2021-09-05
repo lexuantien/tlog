@@ -65,7 +65,7 @@ const StyledLink = styled(Link)`
     min-width: 0px;
     font-weight: 700;
     font-size: 15px;
-    font-family: TlogChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    font-family: TLogChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
     line-height: 20px;
     overflow-wrap: break-word;
     text-align: center;

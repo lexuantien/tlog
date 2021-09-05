@@ -51,7 +51,7 @@ export const ThemesPkg = {
     fdsSoft: "cubic-bezier(0.08, 0.52, 0.52, 1)",
     secondaryIcon: "#65676b",
 
-    fontFamily: "TlogChirp, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+    fontFamily: "TLogChirp, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
   },
   dark: {
     blue: "rgb(29,161,242)",
@@ -85,6 +85,6 @@ export const ThemesPkg = {
     fdsSoft: "cubic-bezier(0.08, 0.52, 0.52, 1)",
     secondaryIcon: "#65676b",
 
-    fontFamily: "TlogChirp, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+    fontFamily: "TLogChirp, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
   },
 };
