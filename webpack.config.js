@@ -57,10 +57,11 @@ const plugins = [
         from: "./src/manifest.json",
         to: "",
       },
-      // {
-      //   from: "./_redirects",
-      //   to: "",
-      // },
+      // ios splash screen:
+      {
+        from: "./src/images/pwa/splashscreens",
+        to: "splashscreens",
+      },
     ],
   }),
 ];
