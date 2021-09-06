@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, Routes, Route, useNavigate } from "react-router-dom";
 import { styled } from "@linaria/react";
+import loadable from "@loadable/component";
+
 //
-import { Bottom as BottomNav } from "@comps/bottom";
-import { Header as TopHeader } from "@comps/header";
+// import { Bottom as BottomNav } from "@comps/bottom";
+// import { Header as TopHeader } from "@comps/header";
 import { PrivateRoute, PublicRoute } from "../comps/routes";
 //
-import Login from "./login";
-import Log from "./log";
+// import Login from "./login";
+// import Log from "./log";
 //
 import { Vars } from "@styles/variables";
 import { AuthProvider, useAuth } from "../contexts/authen";
@@ -16,6 +18,14 @@ import Search from "./search";
 import Bookmark from "./bookmark";
 import Setting from "./setting";
 import Notification from "./notification";
+
+//
+
+const LoginPage = loadable(() => import("./login"));
+const LogPage = loadable(() => import("./log"));
+
+const TopHeaderComp = loadable(() => import("@comps/header/header"));
+const BottomNavComp = loadable(() => import("@comps/bottom/bottom"));
 
 const SApp = styled.div`
   width: 100%;
@@ -74,11 +84,11 @@ const App = () => {
   return (
     <SApp aria-hidden="false" className="css-div-common r-flex-1">
       <AuthProvider>
-        <TopHeader />
+        <TopHeaderComp />
         <SMain role="main" className="css-div-common r-f-g-1 r-f-s-1 r-flex-1">
           <RoutesConfig />
         </SMain>
-        <BottomNav />
+        <BottomNavComp />
       </AuthProvider>
     </SApp>
   );
@@ -90,7 +100,7 @@ const RoutesConfig = () => {
   return (
     <>
       <Routes>
-        <PublicRoute path="/login" restricted={true} element={<Login />} />
+        <PublicRoute path="/login" restricted={true} element={<LoginPage />} />
       </Routes>
       <SDisplay
         style={{ display: currentUser ? "flex" : "contents" }}
@@ -109,7 +119,7 @@ const RoutesConfig = () => {
               <PrivateRoute path="/search" element={<Search />} />
               <PrivateRoute path="/bookmarks" element={<Bookmark />} />
               <PrivateRoute path="/notifications" element={<Notification />} />
-              <PrivateRoute path="/compose/log" element={<Log />} />
+              <PrivateRoute path="/compose/log" element={<LogPage />} />
               <PrivateRoute path="/settings" element={<Setting />} />
             </Routes>
           </SSection>
