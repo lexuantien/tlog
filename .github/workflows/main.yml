@@ -1,0 +1,47 @@
+name: CI # Give it any name
+
+on:
+  push:
+    branches:
+      - main
+  # schedule:
+  #   - cron: '0 13 * * *' # daily 9pm MYT
+
+jobs:
+  build:
+    # Add [skip-ci] in commit / PR message
+    if: "!contains(github.event.head_commit.message, '[skip-ci]')"
+    runs-on: ubuntu-latest
+
+  steps:
+    - name: Checkout branch
+      uses: actions/checkout@v1
+
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+
+    - uses: actions/cache@v2
+      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+
+    - name: Install Yarn
+      run: npm install -g yarn
+
+    - name: Install dependencies
+      run: yarn install
+
+    - name: Build & deploy
+      run: npx firebase deploy
+      env:
+        CI: true
+        FIREBASE_TOKEN: ${{ secrets.YOUR_SECRET }}
