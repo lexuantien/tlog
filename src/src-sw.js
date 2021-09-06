@@ -33,9 +33,10 @@ precacheAndRoute(self.__WB_MANIFEST);
 // Cache the underlying font files with a cache-first strategy for 1 year.
 // @see https://developers.google.com/web/tools/workbox/guides/common-recipes#google_fonts
 registerRoute(
-  ({ url }) => url.origin === "https://fonts.gstatic.com",
+  ({ url }) =>
+    url.origin === "https://github.com/lexuantien/resource/raw/main/fonts",
   new CacheFirst({
-    cacheName: "google-fonts-webfonts",
+    cacheName: "github-fonts-webfonts",
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],
