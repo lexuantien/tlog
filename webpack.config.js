@@ -8,7 +8,7 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
 
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-// const CopyPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 // const Dotenv = require("dotenv-webpack");
 
@@ -41,36 +41,36 @@ const plugins = [
   //   path: "./.env", // Path to .env file (this is the default)
   //   systemvars: true,
   // }),
-  // new CopyPlugin({
-  //   patterns: [
-  // {
-  //   from: "./src/images/pwa/favicon.ico",
-  //   to: "",
-  // },
-  // {
-  //   from: "./src/images/pwa/logo192.png",
-  //   to: "",
-  // },
-  // {
-  //   from: "./src/images/pwa/logo512.png",
-  //   to: "",
-  // },
-  // {
-  //   from: "./src/manifest.json",
-  //   to: "",
-  // },
-  // // fonts
-  // {
-  //   from: "./src/fonts",
-  //   to: "fonts",
-  // },
-  // // ios splash screen:
-  // {
-  //   from: "./src/images/pwa/splashscreens",
-  //   to: "splashscreens",
-  // },
-  //   ],
-  // }),
+  new CopyPlugin({
+    patterns: [
+      // {
+      //   from: "./src/images/pwa/favicon.ico",
+      //   to: "",
+      // },
+      // {
+      //   from: "./src/images/pwa/logo192.png",
+      //   to: "",
+      // },
+      // {
+      //   from: "./src/images/pwa/logo512.png",
+      //   to: "",
+      // },
+      {
+        from: "./src/manifest.json",
+        to: "",
+      },
+      // // fonts
+      // {
+      //   from: "./src/fonts",
+      //   to: "fonts",
+      // },
+      // // ios splash screen:
+      // {
+      //   from: "./src/images/pwa/splashscreens",
+      //   to: "splashscreens",
+      // },
+    ],
+  }),
 ];
 
 if (process.env.NODE_ENV === "production") {
