@@ -8,9 +8,9 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
 
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
+// const CopyPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
+// const Dotenv = require("dotenv-webpack");
 
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 
@@ -35,42 +35,42 @@ const plugins = [
       if (/\.png$/.test(entry)) return "image";
       return "script";
     },
-    include: "all",
+    // include: "all",
   }),
-  new Dotenv({
-    path: "./.env", // Path to .env file (this is the default)
-    systemvars: true,
-  }),
-  new CopyPlugin({
-    patterns: [
-      {
-        from: "./src/images/pwa/favicon.ico",
-        to: "",
-      },
-      {
-        from: "./src/images/pwa/logo192.png",
-        to: "",
-      },
-      {
-        from: "./src/images/pwa/logo512.png",
-        to: "",
-      },
-      {
-        from: "./src/manifest.json",
-        to: "",
-      },
-      // fonts
-      {
-        from: "./src/fonts",
-        to: "fonts",
-      },
-      // ios splash screen:
-      {
-        from: "./src/images/pwa/splashscreens",
-        to: "splashscreens",
-      },
-    ],
-  }),
+  // new Dotenv({
+  //   path: "./.env", // Path to .env file (this is the default)
+  //   systemvars: true,
+  // }),
+  // new CopyPlugin({
+  //   patterns: [
+  // {
+  //   from: "./src/images/pwa/favicon.ico",
+  //   to: "",
+  // },
+  // {
+  //   from: "./src/images/pwa/logo192.png",
+  //   to: "",
+  // },
+  // {
+  //   from: "./src/images/pwa/logo512.png",
+  //   to: "",
+  // },
+  // {
+  //   from: "./src/manifest.json",
+  //   to: "",
+  // },
+  // // fonts
+  // {
+  //   from: "./src/fonts",
+  //   to: "fonts",
+  // },
+  // // ios splash screen:
+  // {
+  //   from: "./src/images/pwa/splashscreens",
+  //   to: "splashscreens",
+  // },
+  //   ],
+  // }),
 ];
 
 if (process.env.NODE_ENV === "production") {
@@ -129,8 +129,7 @@ module.exports = {
         ],
       },
       {
-        // woff(2)?|ttf|otf|eot|
-        test: /\.(png|jpe?g|gif|svg)$/i,
+        test: /\.(woff(2)?|ttf|otf|eot|png|jpe?g|gif|svg)$/i,
         /**
          * The `type` setting replaces the need for "url-loader"
          * and "file-loader" in Webpack 5.

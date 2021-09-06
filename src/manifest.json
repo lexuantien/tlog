@@ -4,26 +4,48 @@
   "description": "Blog for everyone named T",
   "display": "standalone",
   "categories": ["blog", "news", "magazines"],
+  "share_target": {
+    "action": "compose/log",
+    "enctype": "multipart/form-data",
+    "method": "POST",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "externalMedia",
+          "accept": [
+            "image/jpeg",
+            "image/png",
+            "image/gif",
+            "video/quicktime",
+            "video/mp4"
+          ]
+        }
+      ]
+    }
+  },
   "icons": [
     {
-      "src": "logo192.png",
+      "src": "https://github.com/lexuantien/resource/raw/main/images/logo/logo192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "https://github.com/lexuantien/resource/raw/main/images/logo/logo512.png",
       "type": "image/png",
       "sizes": "512x512"
     },
     {
       "purpose": "maskable",
-      "src": "logo192.png",
+      "src": "https://github.com/lexuantien/resource/raw/main/images/logo/logo192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
       "purpose": "maskable",
-      "src": "logo512.png",
+      "src": "https://github.com/lexuantien/resource/raw/main/images/logo/logo512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
