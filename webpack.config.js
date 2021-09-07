@@ -1,11 +1,11 @@
 const path = require("path");
-// const webpack = require("webpack");
+const webpack = require("webpack");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-
-const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
@@ -19,7 +19,6 @@ let target = "web";
 
 const plugins = [
   // mode === "development" && new ReactRefreshWebpackPlugin(),
-  // mode === "development" && new webpack.HotModuleReplacementPlugin(),
 
   new CleanWebpackPlugin(),
   new MiniCssExtractPlugin(),
@@ -27,50 +26,20 @@ const plugins = [
     template: "./src/index.html",
     // filename: "index.html",
   }),
-  new PreloadWebpackPlugin({
-    rel: "preload",
-    as(entry) {
-      if (/\.css$/.test(entry)) return "style";
-      if (/\.woff$/.test(entry)) return "font";
-      if (/\.png$/.test(entry)) return "image";
-      return "script";
-    },
-    // include: "all",
-  }),
+
   // new Dotenv({
   //   path: "./.env", // Path to .env file (this is the default)
   //   systemvars: true,
   // }),
   new CopyPlugin({
     patterns: [
-      // {
-      //   from: "./src/images/pwa/favicon.ico",
-      //   to: "",
-      // },
-      // {
-      //   from: "./src/images/pwa/logo192.png",
-      //   to: "",
-      // },
-      // {
-      //   from: "./src/images/pwa/logo512.png",
-      //   to: "",
-      // },
       {
         from: "./src/manifest.json",
         to: "",
       },
-      // // fonts
-      // {
-      //   from: "./src/fonts",
-      //   to: "fonts",
-      // },
-      // // ios splash screen:
-      // {
-      //   from: "./src/images/pwa/splashscreens",
-      //   to: "splashscreens",
-      // },
     ],
   }),
+  new BundleAnalyzerPlugin(),
 ];
 
 if (process.env.NODE_ENV === "production") {
@@ -86,6 +55,7 @@ if (process.env.NODE_ENV === "production") {
   );
 }
 
+// for development mode
 if (process.env.SERVE) {
   // We only want React Hot Reloading in serve mode
   plugins.push(new ReactRefreshWebpackPlugin());
@@ -115,6 +85,9 @@ module.exports = {
         test: /\.(s[ac]|c)ss$/i,
         use: [
           {
+            // Do not use together style-loader and mini-css-extract-plugin.
+            // devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+            // plugins: [].concat(devMode ? [] : [new MiniCssExtractPlugin()]),
             loader: MiniCssExtractPlugin.loader,
             // This is required for asset imports in CSS, such as url()
             options: {
@@ -156,7 +129,7 @@ module.exports = {
         use: [
           {
             // without additional settings, this will reference .babelrc
-            loader: "babel-loader",
+            loader: require.resolve("babel-loader"),
             options: {
               /**
                * From the docs: When set, the given directory will be used
@@ -165,6 +138,10 @@ module.exports = {
                * the potentially expensive Babel recompilation process on each run.
                */
               cacheDirectory: true,
+              plugins: [
+                process.env.NODE_ENV !== "production" &&
+                  require.resolve("react-refresh/babel"),
+              ].filter(Boolean),
             },
           },
           {
@@ -183,7 +160,7 @@ module.exports = {
 
   target: target,
 
-  devtool: "source-map",
+  devtool: "source-map", // show where the error is
 
   resolve: {
     extensions: [".js", ".jsx"],
@@ -207,13 +184,49 @@ module.exports = {
       // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
       // `...`,
       new CssMinimizerPlugin(),
+      (compiler) => {
+        const TerserPlugin = require("terser-webpack-plugin");
+        new TerserPlugin({
+          terserOptions: {
+            compress: {},
+            format: {
+              comments: false,
+            },
+          },
+          extractComments: false,
+          // enable parallel running
+          parallel: true,
+        }).apply(compiler);
+      },
     ],
     splitChunks: {
-      chunks: "all",
-      //
+      // chunks: "all",
+      // minChunks: 2,
+      // cacheGroups: {
+      //   commons: {
+      //     name: "common",
+      //   },
+      // },
+      cacheGroups: {
+        vendor: {
+          name: "node_vendors",
+          test: /[\\/]node_modules[\\/]/,
+          chunks: "all",
+        },
+      },
     },
-    runtimeChunk: "single",
-    // minimize: true,
+    // runtimeChunk: "single",
+    runtimeChunk: {
+      name: (entrypoint) => `runtimechunk~${entrypoint.name}`,
+    },
+    /**
+     * for choose module id
+     * this is deprecated in the webpack 5
+     */
+    moduleIds: "deterministic",
+    // This will enable CSS optimization only in production mode.
+    //  If you want to run it also in development set the optimization.minimize option to true.
+    minimize: true,
   },
   performance: {
     hints: false,
@@ -223,7 +236,7 @@ module.exports = {
   // required if using webpack-dev-server
   devServer: {
     contentBase: "./dist",
-    host: '192.168.1.9',
+    host: "192.168.1.9",
     disableHostCheck: true,
     hot: true,
     // https://ui.dev/react-router-cannot-get-url-refresh/
