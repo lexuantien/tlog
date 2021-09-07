@@ -94,9 +94,9 @@ const App = () => {
 const RoutesConfig = () => {
   const { currentUser, setCurrentUser } = useAuth();
 
-  useEffect(() => {
-    setCurrentUser(true);
-  }, []);
+  // useEffect(() => {
+  //   setCurrentUser(true);
+  // }, []);
 
   return (
     <>
