@@ -11,6 +11,7 @@ import {
   Google,
   Facebook,
   Github,
+  ShareApple,
 } from "@comps/icons";
 
 const Icon = ({ name, active }) => {
@@ -37,6 +38,8 @@ const Icon = ({ name, active }) => {
       return <Facebook />;
     case "github":
       return <Github />;
+    case "share":
+      return <ShareApple />;
   }
 };
 

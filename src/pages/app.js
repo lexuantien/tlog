@@ -6,6 +6,7 @@ import loadable from "@loadable/component";
 //
 import { Bottom as BottomNav } from "@comps/bottom";
 import { Header as TopHeader } from "@comps/header";
+import { AppleHomeScreenModal } from "@comps/modals";
 import { PrivateRoute, PublicRoute } from "../comps/routes";
 //
 // import Login from "./login";
@@ -86,13 +87,14 @@ const App = () => {
           <RoutesConfig />
         </SMain>
         <BottomNav />
+        <AppleHomeScreenModal />
       </AuthProvider>
     </SApp>
   );
 };
 
 const RoutesConfig = () => {
-  const { currentUser, setCurrentUser } = useAuth();
+  const { currentUser /*, setCurrentUser*/ } = useAuth();
 
   // useEffect(() => {
   //   setCurrentUser(true);
@@ -121,6 +123,7 @@ const RoutesConfig = () => {
               <PrivateRoute path="/bookmarks" element={<Bookmark />} />
               <PrivateRoute path="/notifications" element={<Notification />} />
               <PrivateRoute path="/compose/log" element={<LogPage />} />
+              {/* <Route path="/compose/log" element={<LogPage />} /> */}
               <PrivateRoute path="/settings" element={<Setting />} />
             </Routes>
           </SSection>

@@ -35,10 +35,8 @@ const SPadding = styled.div`
 `;
 
 const SButton = styled.button`
-  position: fixed !important;
-  bottom: 18vh;
-  left: 50vw;
-  margin-left: -28px;
+  position: absolute;
+  bottom: 0;
 `;
 
 const Main = () => {
@@ -61,7 +59,6 @@ const Main = () => {
                 style={{ width: "100%" }}
                 editor={editor}
               />
-              <button>Tien</button>
             </SPadding>
           </SBackground>
         </div>
