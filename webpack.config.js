@@ -1,11 +1,10 @@
 const path = require("path");
-const webpack = require("webpack");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin =
+//   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
@@ -39,7 +38,7 @@ const plugins = [
       },
     ],
   }),
-  new BundleAnalyzerPlugin(),
+  // new BundleAnalyzerPlugin(),
 ];
 
 if (process.env.NODE_ENV === "production") {
@@ -226,7 +225,7 @@ module.exports = {
     moduleIds: "deterministic",
     // This will enable CSS optimization only in production mode.
     //  If you want to run it also in development set the optimization.minimize option to true.
-    minimize: true,
+    // minimize: true,
   },
   performance: {
     hints: false,
@@ -242,4 +241,4 @@ module.exports = {
     // https://ui.dev/react-router-cannot-get-url-refresh/
     historyApiFallback: true,
   },
-};
+}; 
