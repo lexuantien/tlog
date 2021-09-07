@@ -11,7 +11,6 @@ import { Vars } from "@styles/variables";
 // ${fonts}
 export const globalsClazz = css`
   :global() {
-
     svg:not(:root) {
       overflow: hidden;
     }

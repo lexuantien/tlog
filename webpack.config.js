@@ -223,6 +223,8 @@ module.exports = {
   // required if using webpack-dev-server
   devServer: {
     contentBase: "./dist",
+    host: '192.168.1.9',
+    disableHostCheck: true,
     hot: true,
     // https://ui.dev/react-router-cannot-get-url-refresh/
     historyApiFallback: true,

@@ -92,7 +92,11 @@ const App = () => {
 };
 
 const RoutesConfig = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, setCurrentUser } = useAuth();
+
+  useEffect(() => {
+    setCurrentUser(true);
+  }, []);
 
   return (
     <>

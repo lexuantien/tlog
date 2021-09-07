@@ -3,6 +3,7 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   signInWithPopup,
+  signInWithRedirect,
 } from "firebase/auth";
 import React, { useContext, useState, useEffect } from "react";
 import { auth } from "../configs/firebase-config";
@@ -58,6 +59,7 @@ export const AuthProvider = ({ children }) => {
   const value = {
     existedUser,
     currentUser,
+    setCurrentUser,
     login,
     logout,
   };

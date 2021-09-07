@@ -34,6 +34,13 @@ const SPadding = styled.div`
   padding-right: constant(safe-area-inset-right); */
 `;
 
+const SButton = styled.button`
+  position: fixed !important;
+  bottom: 18vh;
+  left: 50vw;
+  margin-left: -28px;
+`;
+
 const Main = () => {
   const editor = useEditor({
     extensions: [StarterKit],
