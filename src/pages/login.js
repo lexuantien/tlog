@@ -5,7 +5,8 @@ import Icon from "@comps/icons/icon";
 //
 import { Vars } from "@styles/variables";
 import { useAuth } from "../contexts/authen";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLoading } from "../contexts/loading";
 
 const SLoginContainer = styled.div`
   min-height: auto;
@@ -44,6 +45,7 @@ const SLoginButton = styled.div`
 
 //  border-color: rgb(61, 84, 102);
 const SButton = styled.div`
+  
   margin-bottom: 15px;
   outline-style: none;
   transition-property: background-color, box-shadow;
@@ -63,7 +65,12 @@ const SButton = styled.div`
   border-style: solid;
   border-radius: 9999px;
   cursor: pointer;
-  pointer-events: auto;
+  /* pointer-events: auto; */
+
+  // for loading state
+  pointer-events: ${(props) => (props.$disabled ? "none" : "auto")};
+  opacity: ${(props) => (props.$disabled ? 0.4 : 1)};
+
 
   &:hover {
     background-color: rgb(230, 230, 230);
@@ -161,18 +168,25 @@ const SLogo = styled.div`
 `;
 
 const Login = () => {
+  const { loading, show, hide } = useLoading();
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { login, existedUser } = useAuth();
 
+  useEffect(()=> {
+    show()
+  },[])
+
   const handleOnClick = async (providerId) => {
     try {
       setError("");
+      show()
       await login(providerId);
       navigate("/home");
     } catch {
       setError("Failed to log in");
     }
+    hide()
   };
 
   const SocialButton = ({ name, text, providerId }) => {
@@ -180,6 +194,7 @@ const Login = () => {
       <SButton
         className="css-div-common r-u-s-none"
         role="button"
+        $disabled={loading}
         tabindex="0"
         onClick={() => handleOnClick(providerId)}
       >

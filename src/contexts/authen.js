@@ -3,10 +3,12 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithRedirect,
 } from "firebase/auth";
 import React, { useContext, useState, useEffect } from "react";
+
 import { auth } from "../configs/firebase-config";
+
+// import { desktop as isDekstop } from "../utils/is";
 
 const AuthContext = React.createContext();
 
@@ -34,6 +36,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = (providerId) => {
     const provider = getProvider(providerId);
+
     return signInWithPopup(auth, provider).catch((err) => {
       if (err.code === "auth/account-exists-with-different-credential") {
         setExistedUser(true);
@@ -52,7 +55,6 @@ export const AuthProvider = ({ children }) => {
       setCurrentUser(user);
       setLoading(false);
     });
-
     return unsubscribe;
   }, []);
 

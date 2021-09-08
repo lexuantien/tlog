@@ -14,6 +14,7 @@ import { PrivateRoute, PublicRoute } from "../comps/routes";
 //
 import { Vars } from "@styles/variables";
 import { AuthProvider, useAuth } from "../contexts/authen";
+import { LoadingProvider } from "../contexts/loading";
 import Home from "./home";
 import Search from "./search";
 import Bookmark from "./bookmark";
@@ -80,16 +81,21 @@ const SSection = styled.section`
 
 const App = () => {
   return (
-    <SApp aria-hidden="false" className="css-div-common r-flex-1">
-      <AuthProvider>
-        <TopHeader />
-        <SMain role="main" className="css-div-common r-f-g-1 r-f-s-1 r-flex-1">
-          <RoutesConfig />
-        </SMain>
-        <BottomNav />
-        <AppleHomeScreenModal />
-      </AuthProvider>
-    </SApp>
+    <AuthProvider>
+      <LoadingProvider>
+        <SApp aria-hidden="false" className="css-div-common r-flex-1">
+          <TopHeader />
+          <SMain
+            role="main"
+            className="css-div-common r-f-g-1 r-f-s-1 r-flex-1"
+          >
+            <RoutesConfig />
+          </SMain>
+          <BottomNav />
+          <AppleHomeScreenModal />
+        </SApp>
+      </LoadingProvider>
+    </AuthProvider>
   );
 };
 
